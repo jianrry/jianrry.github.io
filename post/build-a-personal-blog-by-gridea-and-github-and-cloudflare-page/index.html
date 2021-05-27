@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Gridea+GitHub+CloudFlare Page 免费搭建个人博客 | Jianrry</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://blog.jianrry.com/favicon.ico?v=1622105930955">
+<link rel="stylesheet" href="https://blog.jianrry.com/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="Gridea 是一个静态博客写作客户端，你可以通过 Gridea 写作（支持 MarkDown 语法），然后将文章发布到任何静态站点上（支持 GitHub Pages 和 Coding Pages 以及 SFTP），最后通过 CloudFl..." />
+    <meta name="keywords" content="github,cloudflare,Gridea" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://blog.jianrry.com">
+        <img src="https://blog.jianrry.com/images/avatar.png?v=1622105930955" class="site-logo">
+        <h1 class="site-title">Jianrry</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav" target="_blank">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav" target="_blank">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav" target="_blank">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav" target="_blank">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/jianrry" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://blog.jianrry.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Gridea+GitHub+CloudFlare Page 免费搭建个人博客</h2>
+            <div class="post-date">2021-05-04</div>
+            
+              <div class="feature-container" style="background-image: url('https://drive.jianrry.com/image/gridea-cover-picture.jpg?raw')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <p>Gridea 是一个静态博客写作客户端，你可以通过 Gridea 写作（支持 MarkDown 语法），然后将文章发布到任何静态站点上（支持 GitHub Pages 和 Coding Pages 以及 SFTP），最后通过 CloudFlare Page 加速访问，从而免费搭建一个自己的博客。</p>
+<!-- more -->
+<p><ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#github">GitHub</a>
+<ul>
+<li><a href="#step1%E7%99%BB%E9%99%86%E4%BD%A0%E7%9A%84-github-%E8%B4%A6%E5%8F%B7">Step1：登陆你的 GitHub 账号</a></li>
+<li><a href="#step2%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E4%BB%93%E5%BA%93">Step2：新建一个新的仓库</a></li>
+<li><a href="#step3-%E7%94%B3%E8%AF%B7%E4%B8%80%E4%B8%AA-token">Step3: 申请一个 Token</a></li>
+</ul>
+</li>
+<li><a href="#cloudflare-page">CloudFlare Page</a>
+<ul>
+<li><a href="#step1%E7%99%BB%E9%99%86%E4%BD%A0%E7%9A%84-cloudflare-%E8%B4%A6%E5%8F%B7">Step1：登陆你的 CloudFlare 账号</a></li>
+<li><a href="#step2%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA-cloudflare-pages-%E9%A1%B9%E7%9B%AE">Step2：创建一个 CloudFlare Pages 项目</a></li>
+<li><a href="#step3%E9%80%89%E6%8B%A9%E4%B8%80%E4%B8%AA-github-%E4%BB%93%E5%BA%93">Step3：选择一个 GitHub 仓库</a></li>
+<li><a href="#step4%E6%9E%84%E5%BB%BA%E5%92%8C%E9%83%A8%E7%BD%B2">Step4：构建和部署</a></li>
+<li><a href="#step5%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D">Step5：自定义域名</a></li>
+</ul>
+</li>
+<li><a href="#gridea">Gridea</a>
+<ul>
+<li><a href="#step1%E4%B8%8B%E8%BD%BD%E5%B9%B6%E5%AE%89%E8%A3%85-gridea">Step1：下载并安装 Gridea</a></li>
+<li><a href="#step2%E9%85%8D%E7%BD%AE%E8%BF%9C%E7%A8%8B%E9%93%BE%E6%8E%A5">Step2：配置远程链接</a></li>
+<li><a href="#step3-%E5%BC%80%E5%90%AF%E8%AF%84%E8%AE%BA">Step3: 开启评论</a></li>
+<li><a href="#step4%E5%A4%87%E4%BB%BD%E5%92%8C%E8%BF%98%E5%8E%9F">Step4：备份和还原</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</p>
+<h2 id="github">GitHub</h2>
+<h3 id="step1登陆你的-github-账号">Step1：登陆你的 GitHub 账号</h3>
+<p>打开<a href="https://github.com/login">官网</a>，登录你的 GitHub 账号（如果没有，就注册一个 GitHub 账号）。</p>
+<figure data-type="image" tabindex="1"><img src="https://drive.jianrry.com/image/github-sign-in.jpg?raw" alt="" loading="lazy"></figure>
+<h3 id="step2新建一个新的仓库">Step2：新建一个新的仓库</h3>
+<p>点击<a href="https://github.com/new">此处</a>，创建一个新的公开仓库，用于存放网站文件。</p>
+<figure data-type="image" tabindex="2"><img src="https://drive.jianrry.com/image/github-create-a-new-repository.jpg?raw" alt="" loading="lazy"></figure>
+<h3 id="step3-申请一个-token">Step3: 申请一个 Token</h3>
+<p>点击<a href="https://github.com/settings/tokens/new">此处</a>，申请一个 Token，用于推送网站文件到 GitHub。</p>
+<p>申请 Token时，<strong>记得勾选上仓库相关的全部权限</strong>。</p>
+<p>一旦 Token 生成后，<strong>建议保存到本地</strong>，因为 Token 只显示一次。</p>
+<figure data-type="image" tabindex="3"><img src="https://drive.jianrry.com/image/github-generate-new-token.jpg?raw" alt="" loading="lazy"></figure>
+<h2 id="cloudflare-page">CloudFlare Page</h2>
+<h3 id="step1登陆你的-cloudflare-账号">Step1：登陆你的 CloudFlare 账号</h3>
+<p>打开<a href="https://dash.cloudflare.com/login">官网</a>，登录你的 CloudFlare 账号（如果没有，就注册一个 CloudFlare 账号）。</p>
+<figure data-type="image" tabindex="4"><img src="https://drive.jianrry.com/image/cloudflare-sign-in.jpg?raw" alt="" loading="lazy"></figure>
+<h3 id="step2创建一个-cloudflare-pages-项目">Step2：创建一个 CloudFlare Pages 项目</h3>
+<p>点击<a href="https://dash.cloudflare.com/sign-up/pages">此处</a>，创建一个 CloudFlare Pages 项目</p>
+<figure data-type="image" tabindex="5"><img src="https://drive.jianrry.com/image/cloudflare-create-a-cloudflare-pages-project.jpg?raw" alt="" loading="lazy"></figure>
+<h3 id="step3选择一个-github-仓库">Step3：选择一个 GitHub 仓库</h3>
+<p>然后选择一个 GitHub 仓库，选中上文中的 GitHub 仓库。</p>
+<figure data-type="image" tabindex="6"><img src="https://drive.jianrry.com/image/cloudflare-choose-a-github-repository.jpg?raw" alt="" loading="lazy"></figure>
+<h3 id="step4构建和部署">Step4：构建和部署</h3>
+<p>建议保存默认，点击“保存并部署”，进入到下一步。</p>
+<figure data-type="image" tabindex="7"><img src="https://drive.jianrry.com/image/cloudflare-build-a-cloudflare-pages-project.jpg?raw" alt="" loading="lazy"></figure>
+<p>部署成功后，你可以通过 CloudFlare 提供的二级域名，访问你的博客。</p>
+<figure data-type="image" tabindex="8"><img src="https://drive.jianrry.com/image/cloudflare-build-a-cloudflare-pages-project-success.jpg?raw" alt="" loading="lazy"></figure>
+<h3 id="step5自定义域名">Step5：自定义域名</h3>
+<p>如果你对 CloudFlare 提供的二级域名不满意，可以自定义你的域名，前提是你的域名托管在 CloudFlare。</p>
+<p>你可以参考<a href="https://blog.jianrry.com/post/change-namesilo-ns-server-to-cloudflare/">这篇文章</a>，将你的域名托管到 CloudFlare。</p>
+<figure data-type="image" tabindex="9"><img src="https://drive.jianrry.com/image/cloudflare-custom-a-domain-for-cloudflare-pages.jpg?raw" alt="" loading="lazy"></figure>
+<p>然后确认新的 DNS 记录，CloudFlare 会自动添加一条 DNS 记录指向 CloudFlare Pages 提供的二级域名。</p>
+<figure data-type="image" tabindex="10"><img src="https://drive.jianrry.com/image/cloudflare-confirm-a-dns-record-for-cloudflare-pages.jpg?raw" alt="" loading="lazy"></figure>
+<p>如果确认失败，就手动添加一条 cname 记录，然后重新自定义域名即可。你可以参考<a href="https://blog.jianrry.com/post/cloudflare-beginner-guide/">这篇文章</a>，添加一条 cname 记录。</p>
+<h2 id="gridea">Gridea</h2>
+<h3 id="step1下载并安装-gridea">Step1：下载并安装 Gridea</h3>
+<p>打开<a href="https://gridea.dev/">官网</a>，下载对应平台的安装包，并安装到你的操作系统上。</p>
+<figure data-type="image" tabindex="11"><img src="https://drive.jianrry.com/image/gridea-cover-picture.jpg?raw" alt="" loading="lazy"></figure>
+<h3 id="step2配置远程链接">Step2：配置远程链接</h3>
+<p>打开“Gridea—远程—基础设置”，按照下图的示例进行设置，然后点击「检测远程链接」，进行配置检查。</p>
+<p>如果没有检查出问题，就点击“保存”按钮进行保存。</p>
+<figure data-type="image" tabindex="12"><img src="https://drive.jianrry.com/image/gridea-remote-setting.jpg?raw" alt="" loading="lazy"></figure>
+<h3 id="step3-开启评论">Step3: 开启评论</h3>
+<p>Gridea 支持 gitalk 和 disqusjs 评论系统，你可以选择其中之一作为你博客的评论系统。</p>
+<p>你可以参考以下的官方文档，打开“Gridea—远程—评论设置”，修改一下配置，就可以评论了。</p>
+<p><a href="https://github.com/gitalk/gitalk">gitalk</a></p>
+<p><a href="https://github.com/SukkaW/DisqusJS">disqusjs</a></p>
+<h3 id="step4备份和还原">Step4：备份和还原</h3>
+<p>点击左下角的图标，进入到备份页面，就可以看到博客源文件夹了。你只需要将文件夹上传到网盘，推荐使用onedrive，就可以实现备份了。</p>
+<figure data-type="image" tabindex="13"><img src="https://drive.jianrry.com/image/gridea-backup-setting.jpg?raw" alt="" loading="lazy"></figure>
+<p>同理，如果你想要还原，只需要下载博客源文件夹到本地。然后进入到备份页面，重新设置一下博客源文件夹的目录就可以了。</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://blog.jianrry.com/tag/github/" class="tag">
+                    github
+                  </a>
+                
+                  <a href="https://blog.jianrry.com/tag/cloudflare/" class="tag">
+                    cloudflare
+                  </a>
+                
+                  <a href="https://blog.jianrry.com/tag/zIx5AExsM/" class="tag">
+                    Gridea
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://blog.jianrry.com/post/cloudflare-beginner-guide/">
+                  <h3 class="post-title">
+                    CloudFlare 域名解析 CDN加速教程
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '621354180a33de9b9548',
+        clientSecret: '429ebafe001bd88b0d6775ba4accab0df04b1638',
+        repo: 'jianrry.github.io',
+        owner: 'Jianrry',
+        admin: ['Jianrry'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

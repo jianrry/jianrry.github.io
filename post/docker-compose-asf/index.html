@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Docker Compose 运行 ArchiSteamFarm | Jianrry</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://blog.jianrry.com/favicon.ico?v=1622105930955">
+<link rel="stylesheet" href="https://blog.jianrry.com/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="你可以使用我的 Docker Compose文件，只需要修改少量的配置，花费10分钟不到就可以在服务器或者本机上运行 ArchiSteamFarm。
+
+特性：
+
+自动签发 SSL 证书，证书到期后自动续期
+HTTP 强制跳转到 HTTPS
+..." />
+    <meta name="keywords" content="asf,docker" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://blog.jianrry.com">
+        <img src="https://blog.jianrry.com/images/avatar.png?v=1622105930955" class="site-logo">
+        <h1 class="site-title">Jianrry</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav" target="_blank">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav" target="_blank">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav" target="_blank">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav" target="_blank">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/jianrry" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://blog.jianrry.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Docker Compose 运行 ArchiSteamFarm</h2>
+            <div class="post-date">2021-05-07</div>
+            
+              <div class="feature-container" style="background-image: url('https://drive.jianrry.com/image/install-docker-compose-on-linux.jpg?raw')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <p>你可以使用我的 Docker Compose文件，只需要修改少量的配置，花费10分钟不到就可以在服务器或者本机上运行 ArchiSteamFarm。</p>
+<!-- more -->
+<h2 id="特性">特性：</h2>
+<ol>
+<li>自动签发 SSL 证书，证书到期后自动续期</li>
+<li>HTTP 强制跳转到 HTTPS</li>
+<li>自动开启 IPC 服务，可以通过 IPC 面板管理</li>
+</ol>
+<h2 id="概述">概述：</h2>
+<p>一共有2个版本：Caddy 和 Nginx。它们在功能上基本上没有区别，推荐使用 Caddy 版本。</p>
+<h3 id="caddy-版本">Caddy 版本：</h3>
+<pre><code>├ docker-compose.yml	        
+│  
+├─asf											
+│  ├─config											
+│  │      ASF.json								
+│  │      IPC.config
+│  │      bot.json
+│  │      bot.maFile
+│  │      
+│  ├─logs
+│  └─plugins
+├
+└─caddy
+    │  Caddyfile
+    │  
+    ├─logs
+    └─srv
+
+docker-compose.yml：docker compose的配置文件
+
+asf：asf的文件夹
+
+	config：asf的配置文件夹
+
+		ASF.json：ASF的配置文件
+
+		IPC.config：ASF的IPC配置文件
+
+		bot.json：ASF的机器人配置文件
+
+		bot.maFile：ASF的机器人令牌文件
+		
+	logs：asf的日志文件夹
+	
+	plugins：asf的插件文件夹
+		
+caddy：caddy的文件夹
+
+Caddyfile：caddy的配置文件
+
+logs：caddy的日志文件夹
+
+srv：caddy的站点文件夹
+</code></pre>
+<h3 id="nginx-版本">Nginx 版本：</h3>
+<pre><code>├ docker-compose.yml
+│  
+├─acme.sh
+├
+├─asf											
+│  ├─config											
+│  │      ASF.json								
+│  │      IPC.config
+│  │      bot.json
+│  │      bot.maFile
+│  │      
+│  ├─logs
+│  └─plugins
+├
+└─nginx
+    ├─config
+    │      asf.domain.com.conf
+    │      
+    ├─logs
+    └─srv
+	
+docker-compose.yml：docker compose的配置文件
+
+acme.sh：acme的证书文件夹
+
+asf：asf的文件夹
+
+	config：asf的配置文件夹
+
+		ASF.json：ASF的配置文件
+
+		IPC.config：ASF的IPC配置文件
+
+		bot.json：ASF的机器人配置文件
+
+		bot.maFile：ASF的机器人令牌文件
+		
+	logs：asf的日志文件夹
+	
+	plugins：asf的插件文件夹
+		
+nginx：nginx的文件夹
+
+	config：nginx的配置文件夹
+	
+		asf.domain.com.conf 站点配置文件
+		
+	logs：nginx的日志文件夹
+	
+	srv：nginx的站点文件夹
+</code></pre>
+<h2 id="安装">安装</h2>
+<h3 id="step1安装-docker">Step1：安装 Docker</h3>
+<p>海外地区：</p>
+<pre><code> curl -fsSL https://get.docker.com -o get-docker.sh
+ sudo sh get-docker.sh
+</code></pre>
+<p>中国大陆地区：</p>
+<pre><code>curl -sSL https://get.daocloud.io/docker | sh
+curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io
+</code></pre>
+<h3 id="step2安装-docker-compose">Step2：安装 Docker Compose</h3>
+<p>海外地区：</p>
+<pre><code> sudo curl -L &quot;https://github.com/docker/compose/releases/download/1.29.1/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose
+
+ sudo chmod +x /usr/local/bin/docker-compose
+</code></pre>
+<p>中国大陆地区：</p>
+<pre><code>curl -L https://get.daocloud.io/docker/compose/releases/download/1.29.1/docker-compose-`uname -s`-`uname -m` &gt; /usr/local/bin/docker-compose
+
+chmod +x /usr/local/bin/docker-compose
+</code></pre>
+<h3 id="step3下载文件然后解压">Step3：下载文件，然后解压</h3>
+<p>GitHub：<a href="https://github.com/jianrry/docker-compose-asf">https://github.com/jianrry/docker-compose-asf</a></p>
+<p>Caddy 版本：<a href="https://github.com/jianrry/docker-compose-asf/releases/download/1.0.0/caddy.zip">https://github.com/jianrry/docker-compose-asf/releases/download/1.0.0/caddy.zip</a></p>
+<p>Nginx 版本：<a href="https://github.com/jianrry/docker-compose-asf/releases/download/1.0.0/nginx.zip">https://github.com/jianrry/docker-compose-asf/releases/download/1.0.0/nginx.zip</a></p>
+<h3 id="step4修改配置文件">Step4：修改配置文件</h3>
+<p>Caddy 版本：</p>
+<ol>
+<li>将 <code>docker-compose.yml</code> 中的 CloudFlare 账号的电子邮箱和 API 密钥修改为你自己的。</li>
+<li>将 <code>caddy/Caddyfile</code> 中的域名修改为你自己的。</li>
+<li>将 <code>asf/config</code> 中的 <code>ASF.json</code>、<code>bot.json</code>、<code>bot.maFile</code> 修改为你自己的。</li>
+</ol>
+<p>Nginx 版本：</p>
+<ol>
+<li>将 <code>docker-compose.yml</code> 中的 CloudFlare 账号的电子邮箱和 API 密钥修改为你自己的。</li>
+<li>将 <code>nginx/config</code> 中的 <code>asf.domain.conf</code> 重命名，然后将其中的域名修改为你自己的。</li>
+<li>将 <code>asf/config</code> 中的 <code>ASF.json</code>、<code>bot.json</code>、<code>bot.maFile</code> 修改为你自己的。</li>
+</ol>
+<h3 id="step5创建容器然后启动">Step5：创建容器，然后启动</h3>
+<p>将文件上传到服务器上后，进入 <code>docker-compose.yml</code> 的所在目录。</p>
+<p>Caddy 版本：</p>
+<pre><code>docker-compose up
+</code></pre>
+<p>Nginx 版本：</p>
+<pre><code>sudo docker-compose run acme.sh --issue --dns dns_cf -d asf.domain.com
+
+docker-compose up
+</code></pre>
+<h2 id="常用命令">常用命令</h2>
+<p>构建镜像，并启动服务：</p>
+<pre><code>docker-compose up
+</code></pre>
+<p>查询实时日志：</p>
+<pre><code>docker-compose logs service_name
+</code></pre>
+<p>停止服务：</p>
+<pre><code>docker-compose stop service_name
+</code></pre>
+<p>启动服务：</p>
+<pre><code>docker-compose start service_name
+</code></pre>
+<p>删除服务：</p>
+<pre><code>docker-compose rm service_name
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://blog.jianrry.com/tag/asf/" class="tag">
+                    asf
+                  </a>
+                
+                  <a href="https://blog.jianrry.com/tag/docker/" class="tag">
+                    docker
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://blog.jianrry.com/post/install-docker-compose-on-linux/">
+                  <h3 class="post-title">
+                    Linux 安装 Docker Compose
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '621354180a33de9b9548',
+        clientSecret: '429ebafe001bd88b0d6775ba4accab0df04b1638',
+        repo: 'jianrry.github.io',
+        owner: 'Jianrry',
+        admin: ['Jianrry'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

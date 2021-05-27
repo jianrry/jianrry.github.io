@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Linux 安装 Docker Compose | Jianrry</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://blog.jianrry.com/favicon.ico?v=1622105930955">
+<link rel="stylesheet" href="https://blog.jianrry.com/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="这篇文章介绍了如何在 Linux 上安装 Docker Compose。
+
+
+
+
+安装
+
+官方镜像源
+DaoCloud 镜像源
+
+
+卸载
+
+
+
+
+安装
+官方镜像源
+你可以从官方镜像源下载安装 Docker Compose，推荐中国大陆之外地..." />
+    <meta name="keywords" content="docker,ubuntu" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://blog.jianrry.com">
+        <img src="https://blog.jianrry.com/images/avatar.png?v=1622105930955" class="site-logo">
+        <h1 class="site-title">Jianrry</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav" target="_blank">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav" target="_blank">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav" target="_blank">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav" target="_blank">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/jianrry" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://blog.jianrry.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Linux 安装 Docker Compose</h2>
+            <div class="post-date">2021-05-06</div>
+            
+              <div class="feature-container" style="background-image: url('https://drive.jianrry.com/image/install-docker-compose-on-linux.jpg?raw')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <p>这篇文章介绍了如何在 Linux 上安装 Docker Compose。</p>
+<!-- more -->
+<p><ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%AE%89%E8%A3%85">安装</a>
+<ul>
+<li><a href="#%E5%AE%98%E6%96%B9%E9%95%9C%E5%83%8F%E6%BA%90">官方镜像源</a></li>
+<li><a href="#daocloud-%E9%95%9C%E5%83%8F%E6%BA%90">DaoCloud 镜像源</a></li>
+</ul>
+</li>
+<li><a href="#%E5%8D%B8%E8%BD%BD">卸载</a></li>
+</ul>
+</li>
+</ul>
+</p>
+<h2 id="安装">安装</h2>
+<h3 id="官方镜像源">官方镜像源</h3>
+<p>你可以从官方镜像源下载安装 Docker Compose，推荐中国大陆之外地区的用户使用。</p>
+<pre><code> sudo curl -L &quot;https://github.com/docker/compose/releases/download/1.29.1/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose
+
+ sudo chmod +x /usr/local/bin/docker-compose
+</code></pre>
+<p>你可以通过修改URL中的版本，可以自定义您想要下载安装的 Docker Compose 版本。</p>
+<h3 id="daocloud-镜像源">DaoCloud 镜像源</h3>
+<p>你还可以从 DaoCloud 镜像源下载安装 Docker Compose，仅推荐中国大陆地区的用户使用。</p>
+<pre><code>curl -L https://get.daocloud.io/docker/compose/releases/download/1.29.1/docker-compose-`uname -s`-`uname -m` &gt; /usr/local/bin/docker-compose
+
+chmod +x /usr/local/bin/docker-compose
+</code></pre>
+<h2 id="卸载">卸载</h2>
+<p>只需要删除下载的 Docker Compose 文件即可。</p>
+<pre><code>sudo rm /usr/local/bin/docker-compose
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://blog.jianrry.com/tag/docker/" class="tag">
+                    docker
+                  </a>
+                
+                  <a href="https://blog.jianrry.com/tag/ubuntu/" class="tag">
+                    ubuntu
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://blog.jianrry.com/post/install-docker-engine-on-ubuntu/">
+                  <h3 class="post-title">
+                    Ubuntu 安装 Docker Engine
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '621354180a33de9b9548',
+        clientSecret: '429ebafe001bd88b0d6775ba4accab0df04b1638',
+        repo: 'jianrry.github.io',
+        owner: 'Jianrry',
+        admin: ['Jianrry'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

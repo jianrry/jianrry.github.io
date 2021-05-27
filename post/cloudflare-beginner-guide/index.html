@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>CloudFlare 域名解析 CDN加速教程 | Jianrry</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://blog.jianrry.com/favicon.ico?v=1622105930955">
+<link rel="stylesheet" href="https://blog.jianrry.com/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="上一篇文章介绍了如何使用 CloudFlare 托管你的网站，接下来介绍如何使用 CloudFlare 进行域名解析和 CDN 加速。
+
+
+
+
+域名解析
+
+Step1：登陆你的 CloudFlare 账号
+Step2：打开你的网站
+Step..." />
+    <meta name="keywords" content="cloudflare,domain" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://blog.jianrry.com">
+        <img src="https://blog.jianrry.com/images/avatar.png?v=1622105930955" class="site-logo">
+        <h1 class="site-title">Jianrry</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav" target="_blank">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav" target="_blank">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav" target="_blank">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav" target="_blank">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/jianrry" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://blog.jianrry.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">CloudFlare 域名解析 CDN加速教程</h2>
+            <div class="post-date">2021-05-03</div>
+            
+              <div class="feature-container" style="background-image: url('https://drive.jianrry.com/image/cloudflare-cover-picture.jpg?raw')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <p><a href="https://blog.jianrry.com/post/change-namesilo-ns-server-to-cloudflare/">上一篇文章</a>介绍了如何使用 CloudFlare 托管你的网站，接下来介绍如何使用 CloudFlare 进行域名解析和 CDN 加速。</p>
+<!-- more -->
+<p><ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%9F%9F%E5%90%8D%E8%A7%A3%E6%9E%90">域名解析</a>
+<ul>
+<li><a href="#step1%E7%99%BB%E9%99%86%E4%BD%A0%E7%9A%84-cloudflare-%E8%B4%A6%E5%8F%B7">Step1：登陆你的 CloudFlare 账号</a></li>
+<li><a href="#step2%E6%89%93%E5%BC%80%E4%BD%A0%E7%9A%84%E7%BD%91%E7%AB%99">Step2：打开你的网站</a></li>
+<li><a href="#step3%E6%89%93%E5%BC%80-dns-%E7%AE%A1%E7%90%86">Step3：打开 DNS 管理</a></li>
+<li><a href="#step4%E6%B7%BB%E5%8A%A0-dns-%E8%A7%A3%E6%9E%90">Step4：添加 DNS 解析</a></li>
+</ul>
+</li>
+<li><a href="#cdn-%E5%8A%A0%E9%80%9F">CDN 加速</a>
+<ul>
+<li><a href="#%E6%9C%AA%E5%8A%A0%E9%80%9F">未加速</a></li>
+<li><a href="#%E5%B7%B2%E5%8A%A0%E9%80%9F">已加速</a></li>
+<li><a href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9">注意事项</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</p>
+<h2 id="域名解析">域名解析</h2>
+<h3 id="step1登陆你的-cloudflare-账号">Step1：登陆你的 CloudFlare 账号</h3>
+<p>打开<a href="https://dash.cloudflare.com/login">官网</a>，登录你的 CloudFlare 账号（如果没有，就注册一个 CloudFlare 账号）。</p>
+<figure data-type="image" tabindex="1"><img src="https://drive.jianrry.com/image/cloudflare-sign-in.jpg?raw" alt="" loading="lazy"></figure>
+<h3 id="step2打开你的网站">Step2：打开你的网站</h3>
+<p>登录你的 CloudFlare 账号，打开你想要解析的网站。</p>
+<figure data-type="image" tabindex="2"><img src="https://drive.jianrry.com/image/cloudflare-choose-your-website.jpg?raw" alt="" loading="lazy"></figure>
+<h3 id="step3打开-dns-管理">Step3：打开 DNS 管理</h3>
+<p>然后点击“DNS”按钮，进入 DNS 管理。</p>
+<figure data-type="image" tabindex="3"><img src="https://drive.jianrry.com/image/cloudflare-dns-manage.jpg?raw" alt="" loading="lazy"></figure>
+<h3 id="step4添加-dns-解析">Step4：添加 DNS 解析</h3>
+<p>以jianrry.com为例：</p>
+<p>A记录：</p>
+<figure data-type="image" tabindex="4"><img src="https://drive.jianrry.com/image/cloudflare-a-record.jpg?raw" alt="" loading="lazy"></figure>
+<p>AAAA记录：</p>
+<figure data-type="image" tabindex="5"><img src="https://drive.jianrry.com/image/cloudflare-aaaa-record.jpg?raw" alt="" loading="lazy"></figure>
+<p>CNAME记录：</p>
+<figure data-type="image" tabindex="6"><img src="https://drive.jianrry.com/image/cloudflare-cname-record.jpg?raw" alt="" loading="lazy"></figure>
+<p>MX记录：</p>
+<p>MX记录是邮件交换记录，用于电子邮件系统发邮件时根据收信人的地址后缀来定位邮件服务器。经常用于申请域名邮箱，这里不作介绍，更多请参考 http://service.oray.com/question/172.html</p>
+<p>TXT记录：</p>
+<p>TXT记录，一般指为某个主机名或域名设置的说明。经常用于设置邮箱的反垃圾信息和验证域名的所有权，这里不作介绍，更多请参考 http://service.oray.com/question/566.html</p>
+<p>SRV记录：</p>
+<p>SRV记录，一般是为Microsoft的活动目录设置时的应用。基本上不会用到，这里不作介绍，更多请参考 http://service.oray.com/question/192.html</p>
+<p>CAA记录：</p>
+<p>CAA记录，一般用来防止域名证书的劫持。基本上不会用到，这里不作介绍，更多请参考 https://help.aliyun.com/document_detail/65537.html</p>
+<p><strong>DNS解析不是及时生效的，需要等待一段时间。一般情况下，30分钟左右才会生效。</strong></p>
+<h2 id="cdn-加速">CDN 加速</h2>
+<h3 id="未加速">未加速</h3>
+<p>进入到 DNS 管理，切换代理状态，就可以使用 CDN 加速。</p>
+<figure data-type="image" tabindex="7"><img src="https://drive.jianrry.com/image/cloudflare-a-record-without-cdn.jpg?raw" alt="" loading="lazy"></figure>
+<p>代理状态为“仅限DNS”，则说明没有使用 CDN 加速。</p>
+<h3 id="已加速">已加速</h3>
+<figure data-type="image" tabindex="8"><img src="https://drive.jianrry.com/image/cloudflare-a-record-with-cdn.jpg?raw" alt="" loading="lazy"></figure>
+<p>代理状态为“已代理”，则说明已经了使用 CDN 加速。</p>
+<h3 id="注意事项">注意事项</h3>
+<p>因为某些众所周知的原因，CloudFlare 的 CDN 加速效果在中国大陆并不理想，甚至可能导致网站在中国大陆的访问速度变慢。</p>
+<p>如果你的网站的目标群体是中国大陆的访客，建议使用 CloudFlare 在国内的合作伙伴（京东智联云）或者 国内的 CDN 服务商提供的 CDN 加速服务。</p>
+<p>如果你想使用国内的 CDN 加速服务，你的网站则必须完成备案，所以我放弃了使用国内的 CDN 加速服务。</p>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://blog.jianrry.com/tag/cloudflare/" class="tag">
+                    cloudflare
+                  </a>
+                
+                  <a href="https://blog.jianrry.com/tag/domain/" class="tag">
+                    domain
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://blog.jianrry.com/post/covid-19-vaccination-record/">
+                  <h3 class="post-title">
+                    COVID-19疫苗接种过程记录
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '621354180a33de9b9548',
+        clientSecret: '429ebafe001bd88b0d6775ba4accab0df04b1638',
+        repo: 'jianrry.github.io',
+        owner: 'Jianrry',
+        admin: ['Jianrry'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

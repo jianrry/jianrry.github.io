@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>Ubuntu 安装 Docker Engine | Jianrry</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://blog.jianrry.com/favicon.ico?v=1622105930955">
+<link rel="stylesheet" href="https://blog.jianrry.com/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="这篇文章介绍了如何在 Ubuntu 上安装 Docker Engine。
+
+
+
+
+系统要求
+安装
+
+官方镜像源
+DaoCloud 镜像源
+
+
+配置 Docker 镜像站
+卸载
+
+
+
+
+系统要求
+Docker Engine 支持以下的 Ubu..." />
+    <meta name="keywords" content="docker,ubuntu" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://blog.jianrry.com">
+        <img src="https://blog.jianrry.com/images/avatar.png?v=1622105930955" class="site-logo">
+        <h1 class="site-title">Jianrry</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav" target="_blank">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav" target="_blank">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav" target="_blank">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav" target="_blank">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/jianrry" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://blog.jianrry.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">Ubuntu 安装 Docker Engine</h2>
+            <div class="post-date">2021-05-05</div>
+            
+              <div class="feature-container" style="background-image: url('https://drive.jianrry.com/image/install-docker-on-ubuntu.jpg?raw')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <p>这篇文章介绍了如何在 Ubuntu 上安装 Docker Engine。</p>
+<!-- more -->
+<p><ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E7%B3%BB%E7%BB%9F%E8%A6%81%E6%B1%82">系统要求</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85">安装</a>
+<ul>
+<li><a href="#%E5%AE%98%E6%96%B9%E9%95%9C%E5%83%8F%E6%BA%90">官方镜像源</a></li>
+<li><a href="#daocloud-%E9%95%9C%E5%83%8F%E6%BA%90">DaoCloud 镜像源</a></li>
+</ul>
+</li>
+<li><a href="#%E9%85%8D%E7%BD%AE-docker-%E9%95%9C%E5%83%8F%E7%AB%99">配置 Docker 镜像站</a></li>
+<li><a href="#%E5%8D%B8%E8%BD%BD">卸载</a></li>
+</ul>
+</li>
+</ul>
+</p>
+<h2 id="系统要求">系统要求</h2>
+<p>Docker Engine 支持以下的 Ubuntu 版本：</p>
+<ul>
+<li>Ubuntu Hirsute 21.04</li>
+<li>Ubuntu Groovy 20.10</li>
+<li>Ubuntu Focal 20.04 (LTS)</li>
+<li>Ubuntu Bionic 18.04 (LTS)</li>
+<li>Ubuntu Xenial 16.04 (LTS)</li>
+</ul>
+<p>Docker Engine 支持 x86_64 (或 amd64 ), armhf, 以及 arm64 架构。</p>
+<h2 id="安装">安装</h2>
+<h3 id="官方镜像源">官方镜像源</h3>
+<p>你可以从官方镜像源下载安装 Docker Engine，推荐中国大陆之外地区的用户使用。</p>
+<pre><code> curl -fsSL https://get.docker.com -o get-docker.sh
+ sudo sh get-docker.sh
+</code></pre>
+<h3 id="daocloud-镜像源">DaoCloud 镜像源</h3>
+<p>你还可以从 DaoCloud 镜像源下载安装 Docker Engine，仅推荐中国大陆地区的用户使用。</p>
+<pre><code>curl -sSL https://get.daocloud.io/docker | sh
+</code></pre>
+<h2 id="配置-docker-镜像站">配置 Docker 镜像站</h2>
+<p>因为 Docker Hub 在国内的访问速度不理想，你可以通过配置 Docker 镜像站加快访问速度，仅推荐中国大陆地区的用户使用。</p>
+<pre><code>curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io
+</code></pre>
+<p>该脚本可以将 --registry-mirror 加入到你的 Docker 配置文件 /etc/docker/daemon.json 中。适用于 Ubuntu14.04、Debian、CentOS6 、CentOS7、Fedora、Arch Linux、openSUSE Leap 42.1，其他版本可能有细微不同。更多详情请访问文档。</p>
+<h2 id="卸载">卸载</h2>
+<p>卸载 Docker Engine</p>
+<pre><code>sudo apt-get purge docker-ce docker-ce-cli containerd.io
+</code></pre>
+<p>卸载完成之后，镜像、容器、存储卷、自定义配置文件不会自动删除。你可以执行下面的命令，手动删除它们</p>
+<pre><code> sudo rm -rf /var/lib/docker
+ sudo rm -rf /var/lib/containerd
+</code></pre>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://blog.jianrry.com/tag/docker/" class="tag">
+                    docker
+                  </a>
+                
+                  <a href="https://blog.jianrry.com/tag/ubuntu/" class="tag">
+                    ubuntu
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://blog.jianrry.com/post/build-a-personal-blog-by-gridea-and-github-and-cloudflare-page/">
+                  <h3 class="post-title">
+                    Gridea+GitHub+CloudFlare Page 免费搭建个人博客
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '621354180a33de9b9548',
+        clientSecret: '429ebafe001bd88b0d6775ba4accab0df04b1638',
+        repo: 'jianrry.github.io',
+        owner: 'Jianrry',
+        admin: ['Jianrry'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
