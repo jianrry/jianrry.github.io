@@ -2,13 +2,163 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://blog.jianrry.com</id>
     <title>Jianrry</title>
-    <updated>2021-05-28T11:41:29.678Z</updated>
+    <updated>2021-05-29T06:28:00.726Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://blog.jianrry.com"/>
     <link rel="self" href="https://blog.jianrry.com/atom.xml"/>
     <logo>https://blog.jianrry.com/images/avatar.png</logo>
     <icon>https://blog.jianrry.com/favicon.ico</icon>
     <rights>All rights reserved 2021, Jianrry</rights>
+    <entry>
+        <title type="html"><![CDATA[Windows 常用键盘快捷键]]></title>
+        <id>https://blog.jianrry.com/post/windows-keyboard-shortcuts/</id>
+        <link href="https://blog.jianrry.com/post/windows-keyboard-shortcuts/">
+        </link>
+        <updated>2021-05-29T05:21:00.000Z</updated>
+        <summary type="html"><![CDATA[<p>本文介绍了 Windows 常用的键盘快捷键。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>本文介绍了 Windows 常用的键盘快捷键。</p>
+<!-- more -->
+<p><ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#ctrl-%E9%94%AE">Ctrl 键</a></li>
+<li><a href="#windows-%E9%94%AE">Windows 键</a></li>
+<li><a href="#%E5%85%B6%E4%BB%96%E9%94%AE">其他键</a></li>
+<li><a href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99">参考资料</a></li>
+</ul>
+</li>
+</ul>
+</p>
+<h2 id="ctrl-键">Ctrl 键</h2>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ctrl + A</td>
+<td>全选</td>
+</tr>
+<tr>
+<td>Ctrl + C</td>
+<td>复制</td>
+</tr>
+<tr>
+<td>Ctrl + V</td>
+<td>黏贴</td>
+</tr>
+<tr>
+<td>Ctrl + Z</td>
+<td>撤销</td>
+</tr>
+<tr>
+<td>Ctrl + S</td>
+<td>保存</td>
+</tr>
+<tr>
+<td>Ctrl + F</td>
+<td>搜索</td>
+</tr>
+<tr>
+<td>Ctrl + H</td>
+<td>替换</td>
+</tr>
+<tr>
+<td>Ctrl + N</td>
+<td>打开新窗口</td>
+</tr>
+<tr>
+<td>Ctrl + R</td>
+<td>刷新活动窗口</td>
+</tr>
+<tr>
+<td>Ctrl + W</td>
+<td>关闭活动窗口</td>
+</tr>
+<tr>
+<td>Ctrl + D</td>
+<td>移动到回收站</td>
+</tr>
+</tbody>
+</table>
+<h2 id="windows-键">Windows 键</h2>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Windows</td>
+<td>打开或关闭“开始”菜单</td>
+</tr>
+<tr>
+<td>Windows + D</td>
+<td>显示或隐藏桌面</td>
+</tr>
+<tr>
+<td>Windows + E</td>
+<td>打开文件资源管理器</td>
+</tr>
+<tr>
+<td>Windows + G</td>
+<td>打开游戏栏（当游戏处于打开状态时）</td>
+</tr>
+<tr>
+<td>Windows + I</td>
+<td>打开设置</td>
+</tr>
+<tr>
+<td>Windows + L</td>
+<td>锁定你的电脑或切换帐户</td>
+</tr>
+<tr>
+<td>Windows + R</td>
+<td>打开“运行”对话框</td>
+</tr>
+<tr>
+<td>Windows + V</td>
+<td>打开剪贴板</td>
+</tr>
+</tbody>
+</table>
+<h2 id="其他键">其他键</h2>
+<table>
+<thead>
+<tr>
+<th>快捷键</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CapsLk</td>
+<td>切换英文大小写</td>
+</tr>
+<tr>
+<td>Num Lock</td>
+<td>打开或关闭小键盘锁</td>
+</tr>
+<tr>
+<td>Shift + CapsLk</td>
+<td>切换输入法</td>
+</tr>
+<tr>
+<td>PrtSc</td>
+<td>捕获整个屏幕的屏幕截图并将其复制到剪贴板</td>
+</tr>
+</tbody>
+</table>
+<h2 id="参考资料">参考资料</h2>
+<p><a href="https://support.microsoft.com/zh-cn/windows/windows-%E7%9A%84%E9%94%AE%E7%9B%98%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F-dcc61a57-8ff0-cffe-9796-cb9706c75eec">Windows 的键盘快捷方式</a></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[几种常见的购买 Steam 游戏的方式]]></title>
         <id>https://blog.jianrry.com/post/how-to-buy-games-on-steam/</id>
@@ -1117,100 +1267,6 @@ chmod +x /usr/local/bin/docker-compose
 <pre><code> sudo rm -rf /var/lib/docker
  sudo rm -rf /var/lib/containerd
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Gridea+GitHub+CloudFlare Page 免费搭建个人博客]]></title>
-        <id>https://blog.jianrry.com/post/build-a-personal-blog-by-gridea-and-github-and-cloudflare-page/</id>
-        <link href="https://blog.jianrry.com/post/build-a-personal-blog-by-gridea-and-github-and-cloudflare-page/">
-        </link>
-        <updated>2021-05-04T14:56:14.000Z</updated>
-        <summary type="html"><![CDATA[<p>Gridea 是一个静态博客写作客户端，你可以通过 Gridea 写作（支持 MarkDown 语法），然后将文章发布到任何静态站点上（支持 GitHub Pages 和 Coding Pages 以及 SFTP），最后通过 CloudFlare Page 加速访问，从而免费搭建一个自己的博客。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>Gridea 是一个静态博客写作客户端，你可以通过 Gridea 写作（支持 MarkDown 语法），然后将文章发布到任何静态站点上（支持 GitHub Pages 和 Coding Pages 以及 SFTP），最后通过 CloudFlare Page 加速访问，从而免费搭建一个自己的博客。</p>
-<!-- more -->
-<p><ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#github">GitHub</a>
-<ul>
-<li><a href="#step1%E7%99%BB%E9%99%86%E4%BD%A0%E7%9A%84-github-%E8%B4%A6%E5%8F%B7">Step1：登陆你的 GitHub 账号</a></li>
-<li><a href="#step2%E6%96%B0%E5%BB%BA%E4%B8%80%E4%B8%AA%E6%96%B0%E7%9A%84%E4%BB%93%E5%BA%93">Step2：新建一个新的仓库</a></li>
-<li><a href="#step3-%E7%94%B3%E8%AF%B7%E4%B8%80%E4%B8%AA-token">Step3: 申请一个 Token</a></li>
-</ul>
-</li>
-<li><a href="#cloudflare-page">CloudFlare Page</a>
-<ul>
-<li><a href="#step1%E7%99%BB%E9%99%86%E4%BD%A0%E7%9A%84-cloudflare-%E8%B4%A6%E5%8F%B7">Step1：登陆你的 CloudFlare 账号</a></li>
-<li><a href="#step2%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AA-cloudflare-pages-%E9%A1%B9%E7%9B%AE">Step2：创建一个 CloudFlare Pages 项目</a></li>
-<li><a href="#step3%E9%80%89%E6%8B%A9%E4%B8%80%E4%B8%AA-github-%E4%BB%93%E5%BA%93">Step3：选择一个 GitHub 仓库</a></li>
-<li><a href="#step4%E6%9E%84%E5%BB%BA%E5%92%8C%E9%83%A8%E7%BD%B2">Step4：构建和部署</a></li>
-<li><a href="#step5%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D">Step5：自定义域名</a></li>
-</ul>
-</li>
-<li><a href="#gridea">Gridea</a>
-<ul>
-<li><a href="#step1%E4%B8%8B%E8%BD%BD%E5%B9%B6%E5%AE%89%E8%A3%85-gridea">Step1：下载并安装 Gridea</a></li>
-<li><a href="#step2%E9%85%8D%E7%BD%AE%E8%BF%9C%E7%A8%8B%E9%93%BE%E6%8E%A5">Step2：配置远程链接</a></li>
-<li><a href="#step3-%E5%BC%80%E5%90%AF%E8%AF%84%E8%AE%BA">Step3: 开启评论</a></li>
-<li><a href="#step4%E5%A4%87%E4%BB%BD%E5%92%8C%E8%BF%98%E5%8E%9F">Step4：备份和还原</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</p>
-<h2 id="github">GitHub</h2>
-<h3 id="step1登陆你的-github-账号">Step1：登陆你的 GitHub 账号</h3>
-<p>打开<a href="https://github.com/login">官网</a>，登录你的 GitHub 账号（如果没有，就注册一个 GitHub 账号）。</p>
-<figure data-type="image" tabindex="1"><img src="https://drive.jianrry.com/image/github-sign-in.jpg?raw" alt="" loading="lazy"></figure>
-<h3 id="step2新建一个新的仓库">Step2：新建一个新的仓库</h3>
-<p>点击<a href="https://github.com/new">此处</a>，创建一个新的公开仓库，用于存放网站文件。</p>
-<figure data-type="image" tabindex="2"><img src="https://drive.jianrry.com/image/github-create-a-new-repository.jpg?raw" alt="" loading="lazy"></figure>
-<h3 id="step3-申请一个-token">Step3: 申请一个 Token</h3>
-<p>点击<a href="https://github.com/settings/tokens/new">此处</a>，申请一个 Token，用于推送网站文件到 GitHub。</p>
-<p>申请 Token时，<strong>记得勾选上仓库相关的全部权限</strong>。</p>
-<p>一旦 Token 生成后，<strong>建议保存到本地</strong>，因为 Token 只显示一次。</p>
-<figure data-type="image" tabindex="3"><img src="https://drive.jianrry.com/image/github-generate-new-token.jpg?raw" alt="" loading="lazy"></figure>
-<h2 id="cloudflare-page">CloudFlare Page</h2>
-<h3 id="step1登陆你的-cloudflare-账号">Step1：登陆你的 CloudFlare 账号</h3>
-<p>打开<a href="https://dash.cloudflare.com/login">官网</a>，登录你的 CloudFlare 账号（如果没有，就注册一个 CloudFlare 账号）。</p>
-<figure data-type="image" tabindex="4"><img src="https://drive.jianrry.com/image/cloudflare-sign-in.jpg?raw" alt="" loading="lazy"></figure>
-<h3 id="step2创建一个-cloudflare-pages-项目">Step2：创建一个 CloudFlare Pages 项目</h3>
-<p>点击<a href="https://dash.cloudflare.com/sign-up/pages">此处</a>，创建一个 CloudFlare Pages 项目</p>
-<figure data-type="image" tabindex="5"><img src="https://drive.jianrry.com/image/cloudflare-create-a-cloudflare-pages-project.jpg?raw" alt="" loading="lazy"></figure>
-<h3 id="step3选择一个-github-仓库">Step3：选择一个 GitHub 仓库</h3>
-<p>然后选择一个 GitHub 仓库，选中上文中的 GitHub 仓库。</p>
-<figure data-type="image" tabindex="6"><img src="https://drive.jianrry.com/image/cloudflare-choose-a-github-repository.jpg?raw" alt="" loading="lazy"></figure>
-<h3 id="step4构建和部署">Step4：构建和部署</h3>
-<p>建议保存默认，点击“保存并部署”，进入到下一步。</p>
-<figure data-type="image" tabindex="7"><img src="https://drive.jianrry.com/image/cloudflare-build-a-cloudflare-pages-project.jpg?raw" alt="" loading="lazy"></figure>
-<p>部署成功后，你可以通过 CloudFlare 提供的二级域名，访问你的博客。</p>
-<figure data-type="image" tabindex="8"><img src="https://drive.jianrry.com/image/cloudflare-build-a-cloudflare-pages-project-success.jpg?raw" alt="" loading="lazy"></figure>
-<h3 id="step5自定义域名">Step5：自定义域名</h3>
-<p>如果你对 CloudFlare 提供的二级域名不满意，可以自定义你的域名，前提是你的域名托管在 CloudFlare。</p>
-<p>你可以参考<a href="https://blog.jianrry.com/post/change-namesilo-ns-server-to-cloudflare/">这篇文章</a>，将你的域名托管到 CloudFlare。</p>
-<figure data-type="image" tabindex="9"><img src="https://drive.jianrry.com/image/cloudflare-custom-a-domain-for-cloudflare-pages.jpg?raw" alt="" loading="lazy"></figure>
-<p>然后确认新的 DNS 记录，CloudFlare 会自动添加一条 DNS 记录指向 CloudFlare Pages 提供的二级域名。</p>
-<figure data-type="image" tabindex="10"><img src="https://drive.jianrry.com/image/cloudflare-confirm-a-dns-record-for-cloudflare-pages.jpg?raw" alt="" loading="lazy"></figure>
-<p>如果确认失败，就手动添加一条 cname 记录，然后重新自定义域名即可。你可以参考<a href="https://blog.jianrry.com/post/cloudflare-beginner-guide/">这篇文章</a>，添加一条 cname 记录。</p>
-<h2 id="gridea">Gridea</h2>
-<h3 id="step1下载并安装-gridea">Step1：下载并安装 Gridea</h3>
-<p>打开<a href="https://gridea.dev/">官网</a>，下载对应平台的安装包，并安装到你的操作系统上。</p>
-<figure data-type="image" tabindex="11"><img src="https://drive.jianrry.com/image/gridea-cover-picture.jpg?raw" alt="" loading="lazy"></figure>
-<h3 id="step2配置远程链接">Step2：配置远程链接</h3>
-<p>打开“Gridea—远程—基础设置”，按照下图的示例进行设置，然后点击「检测远程链接」，进行配置检查。</p>
-<p>如果没有检查出问题，就点击“保存”按钮进行保存。</p>
-<figure data-type="image" tabindex="12"><img src="https://drive.jianrry.com/image/gridea-remote-setting.jpg?raw" alt="" loading="lazy"></figure>
-<h3 id="step3-开启评论">Step3: 开启评论</h3>
-<p>Gridea 支持 gitalk 和 disqusjs 评论系统，你可以选择其中之一作为你博客的评论系统。</p>
-<p>你可以参考以下的官方文档，打开“Gridea—远程—评论设置”，修改一下配置，就可以评论了。</p>
-<p><a href="https://github.com/gitalk/gitalk">gitalk</a></p>
-<p><a href="https://github.com/SukkaW/DisqusJS">disqusjs</a></p>
-<h3 id="step4备份和还原">Step4：备份和还原</h3>
-<p>点击左下角的图标，进入到备份页面，就可以看到博客源文件夹了。你只需要将文件夹上传到网盘，推荐使用onedrive，就可以实现备份了。</p>
-<figure data-type="image" tabindex="13"><img src="https://drive.jianrry.com/image/gridea-backup-setting.jpg?raw" alt="" loading="lazy"></figure>
-<p>同理，如果你想要还原，只需要下载博客源文件夹到本地。然后进入到备份页面，重新设置一下博客源文件夹的目录就可以了。</p>
 ]]></content>
     </entry>
 </feed>
