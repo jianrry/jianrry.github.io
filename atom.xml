@@ -2,13 +2,210 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://blog.jianrry.com</id>
     <title>Jianrry</title>
-    <updated>2021-05-30T05:25:40.781Z</updated>
+    <updated>2021-05-30T08:16:44.405Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://blog.jianrry.com"/>
     <link rel="self" href="https://blog.jianrry.com/atom.xml"/>
     <logo>https://blog.jianrry.com/images/avatar.png</logo>
     <icon>https://blog.jianrry.com/favicon.ico</icon>
     <rights>All rights reserved 2021, Jianrry</rights>
+    <entry>
+        <title type="html"><![CDATA[Windows 常用命令]]></title>
+        <id>https://blog.jianrry.com/post/windows-commands/</id>
+        <link href="https://blog.jianrry.com/post/windows-commands/">
+        </link>
+        <updated>2021-05-30T05:43:32.000Z</updated>
+        <summary type="html"><![CDATA[<p>本文介绍了 Windows 常用的命令。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>本文介绍了 Windows 常用的命令。</p>
+<!-- more -->
+<p><ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E6%89%93%E5%BC%80%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E7%AC%A6%E7%9A%84%E6%96%B9%E5%BC%8F">打开命令提示符的方式</a></li>
+<li><a href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">常用命令</a>
+<ul>
+<li><a href="#dir">dir</a></li>
+<li><a href="#md">md</a></li>
+<li><a href="#rd">rd</a></li>
+<li><a href="#cd">cd</a></li>
+<li><a href="#del">del</a></li>
+<li><a href="#cls">cls</a></li>
+<li><a href="#ping">ping</a></li>
+<li><a href="#ipconfig">ipconfig</a></li>
+</ul>
+</li>
+<li><a href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99">参考资料</a></li>
+</ul>
+</li>
+</ul>
+</p>
+<h2 id="打开命令提示符的方式">打开命令提示符的方式</h2>
+<ol>
+<li>同时按下“Windows + R”键，打开运行对话框，输入“cmd”，然后回车（推荐）。</li>
+<li>依次点击“开始菜单-Windows系统-命令提示符”。</li>
+<li>在任意文件夹中的空白区域，同时按下 &quot;Shift&quot; 键和鼠标右键，然后点击“在此次打开PowerShell窗口”。</li>
+<li>在文件资源管理器的地址栏前加上 &quot;cmd &quot;，&quot;cmd&quot;后面有一个空格，然后回车。</li>
+</ol>
+<h2 id="常用命令">常用命令</h2>
+<h3 id="dir">dir</h3>
+<p>说明：directory（目录）的缩写。显示目录的文件和子目录的列表</p>
+<p>语法：</p>
+<pre><code>dir [&lt;drive&gt;:][&lt;path&gt;][&lt;filename&gt;]
+</code></pre>
+<p>实例：</p>
+<pre><code>dir
+</code></pre>
+<p>预览：</p>
+<pre><code>PS C:\Users\admin\Desktop&gt; dir
+
+
+    目录: C:\Users\admin\Desktop
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         2021/5/22     16:09           1609 electerm.lnk
+-a----         2021/5/28     17:05           1050 Notepad++.lnk
+-a----         2021/5/27     17:13           1385 v2rayN.lnk
+</code></pre>
+<h3 id="md">md</h3>
+<p>说明：make directory（创建目录）的缩写。创建目录或子目录。</p>
+<p>语法：</p>
+<pre><code>md [&lt;drive&gt;:]&lt;path&gt;
+</code></pre>
+<p>实例：</p>
+<pre><code>md Directory1
+</code></pre>
+<p>预览：</p>
+<pre><code>PS C:\Users\admin\Desktop&gt; dir
+
+
+    目录: C:\Users\admin\Desktop
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         2021/5/30     15:01                Directory1
+-a----         2021/5/22     16:09           1609 electerm.lnk
+-a----         2021/5/28     17:05           1050 Notepad++.lnk
+-a----         2021/5/27     17:13           1385 v2rayN.lnk
+</code></pre>
+<h3 id="rd">rd</h3>
+<p>说明：remove directory（删除目录）的缩写。删除一个空目录。</p>
+<p>语法：</p>
+<pre><code>rd [/s] [/q] [&lt;drive&gt;:]&lt;path&gt;
+</code></pre>
+<p>实例：</p>
+<pre><code>rd Directory1
+</code></pre>
+<p>预览：</p>
+<pre><code>PS C:\Users\admin\Desktop&gt; dir
+
+
+    目录: C:\Users\admin\Desktop
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         2021/5/22     16:09           1609 electerm.lnk
+-a----         2021/5/28     17:05           1050 Notepad++.lnk
+-a----         2021/5/27     17:13           1385 v2rayN.lnk
+</code></pre>
+<p>备注：</p>
+<p>/s ：删除 (指定目录及其所有子目录（包括) 的所有文件）的目录树。</p>
+<p>/q：指定安静模式。 删除目录树时不提示进行确认。</p>
+<h3 id="cd">cd</h3>
+<p>说明：change directory（改变目录）的缩写。显示当前目录的名称或更改当前目录。</p>
+<p>语法：</p>
+<pre><code>cd [&lt;drive&gt;:][&lt;path&gt;]
+</code></pre>
+<p>实例：</p>
+<pre><code>cd C:\Users\admin\Desktop
+</code></pre>
+<p>预览：</p>
+<p>备注：</p>
+<p>如下所示，带有空格的路径，需要加上双引号。</p>
+<pre><code>cd C:\&quot;Program Files&quot;
+</code></pre>
+<p>cd 命令还有另一种用法，可以用于创建一个空文件。</p>
+<pre><code> cd . &gt; filename.txt
+</code></pre>
+<h3 id="del">del</h3>
+<p>说明：delete（删除）的缩写。删除一个或多个文件。</p>
+<p>语法：</p>
+<pre><code>del [/f] [/s] [/q] &lt;names&gt;
+</code></pre>
+<p>实例：</p>
+<pre><code>del filename.txt
+</code></pre>
+<p>预览：</p>
+<p>备注：</p>
+<p>/f ：强制删除只读文件。<br>
+/s：删除当前目录和所有子目录中的指定文件。<br>
+/q：安静模式。 不会提示您确认删除。</p>
+<h3 id="cls">cls</h3>
+<p>说明：clear screen（清除屏幕）的缩写。清除 &quot;命令提示符&quot; 窗口。</p>
+<p>语法：</p>
+<pre><code>cls
+</code></pre>
+<p>实例：</p>
+<pre><code>cls
+</code></pre>
+<p>预览：</p>
+<h3 id="ping">ping</h3>
+<p>说明：通过向另一台 TCP/IP 计算机发送 Internet 控制消息协议 (ICMP) 回响请求消息来验证 IP 级连接。</p>
+<p>语法：</p>
+<pre><code>ping &lt;targetname&gt;
+</code></pre>
+<p>实例：</p>
+<pre><code>ping blog.jianrry.com
+</code></pre>
+<p>预览：</p>
+<pre><code>PS C:\Users\admin\Desktop&gt; ping blog.jianrry.com
+
+正在 Ping blog.jianrry.com [104.21.3.21] 具有 32 字节的数据:
+来自 104.21.3.21 的回复: 字节=32 时间=268ms TTL=52
+来自 104.21.3.21 的回复: 字节=32 时间=289ms TTL=52
+来自 104.21.3.21 的回复: 字节=32 时间=296ms TTL=52
+来自 104.21.3.21 的回复: 字节=32 时间=210ms TTL=52
+
+104.21.3.21 的 Ping 统计信息:
+    数据包: 已发送 = 4，已接收 = 4，丢失 = 0 (0% 丢失)，
+往返行程的估计时间(以毫秒为单位):
+    最短 = 210ms，最长 = 296ms，平均 = 265ms
+</code></pre>
+<h3 id="ipconfig">ipconfig</h3>
+<p>说明：显示所有当前 TCP/IP 网络配置值并刷新动态主机配置协议 (DHCP) 和域名系统 (DNS) 设置。 在没有参数的情况下使用， ipconfig 显示 Internet 协议版本 4 (IPv4) 以及所有适配器的 IPv6 地址、子网掩码和默认网关。</p>
+<p>语法：</p>
+<pre><code>ipconfig
+</code></pre>
+<p>实例：</p>
+<pre><code>ipconfig
+</code></pre>
+<p>预览：</p>
+<pre><code>PS C:\Users\admin\Desktop&gt; ipconfig
+
+Windows IP 配置
+
+
+以太网适配器 以太网:
+
+   连接特定的 DNS 后缀 . . . . . . . :
+   本地链接 IPv6 地址. . . . . . . . : fe80::c51:a62c:1c3b:d115%13
+   IPv4 地址 . . . . . . . . . . . . : 10.0.2.15
+   子网掩码  . . . . . . . . . . . . : 255.255.255.0
+   默认网关. . . . . . . . . . . . . : 10.0.2.2
+</code></pre>
+<p>备注：</p>
+<p>ipconfig 还有一个常见的用法，可以用于刷新 DNS 缓存。</p>
+<pre><code>ipconfig /flushdns
+</code></pre>
+<h2 id="参考资料">参考资料</h2>
+<p><a href="https://docs.microsoft.com/zh-cn/windows-server/administration/windows-commands/windows-commands">Windows 命令</a></p>
+<p><a href="https://zh.wikipedia.org/wiki/MS-DOS%E5%91%BD%E4%BB%A4%E5%88%97%E8%A1%A8">MS-DOS命令列表</a></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Windows 常用键盘快捷键]]></title>
         <id>https://blog.jianrry.com/post/windows-keyboard-shortcuts/</id>
@@ -1209,67 +1406,6 @@ chmod +x /usr/local/bin/docker-compose
 <h2 id="卸载">卸载</h2>
 <p>只需要删除下载的 Docker Compose 文件即可。</p>
 <pre><code>sudo rm /usr/local/bin/docker-compose
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Ubuntu 安装 Docker Engine]]></title>
-        <id>https://blog.jianrry.com/post/install-docker-engine-on-ubuntu/</id>
-        <link href="https://blog.jianrry.com/post/install-docker-engine-on-ubuntu/">
-        </link>
-        <updated>2021-05-05T15:28:42.000Z</updated>
-        <summary type="html"><![CDATA[<p>这篇文章介绍了如何在 Ubuntu 上安装 Docker Engine。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>这篇文章介绍了如何在 Ubuntu 上安装 Docker Engine。</p>
-<!-- more -->
-<p><ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#%E7%B3%BB%E7%BB%9F%E8%A6%81%E6%B1%82">系统要求</a></li>
-<li><a href="#%E5%AE%89%E8%A3%85">安装</a>
-<ul>
-<li><a href="#%E5%AE%98%E6%96%B9%E9%95%9C%E5%83%8F%E6%BA%90">官方镜像源</a></li>
-<li><a href="#daocloud-%E9%95%9C%E5%83%8F%E6%BA%90">DaoCloud 镜像源</a></li>
-</ul>
-</li>
-<li><a href="#%E9%85%8D%E7%BD%AE-docker-%E9%95%9C%E5%83%8F%E7%AB%99">配置 Docker 镜像站</a></li>
-<li><a href="#%E5%8D%B8%E8%BD%BD">卸载</a></li>
-</ul>
-</li>
-</ul>
-</p>
-<h2 id="系统要求">系统要求</h2>
-<p>Docker Engine 支持以下的 Ubuntu 版本：</p>
-<ul>
-<li>Ubuntu Hirsute 21.04</li>
-<li>Ubuntu Groovy 20.10</li>
-<li>Ubuntu Focal 20.04 (LTS)</li>
-<li>Ubuntu Bionic 18.04 (LTS)</li>
-<li>Ubuntu Xenial 16.04 (LTS)</li>
-</ul>
-<p>Docker Engine 支持 x86_64 (或 amd64 ), armhf, 以及 arm64 架构。</p>
-<h2 id="安装">安装</h2>
-<h3 id="官方镜像源">官方镜像源</h3>
-<p>你可以从官方镜像源下载安装 Docker Engine，推荐中国大陆之外地区的用户使用。</p>
-<pre><code> curl -fsSL https://get.docker.com -o get-docker.sh
- sudo sh get-docker.sh
-</code></pre>
-<h3 id="daocloud-镜像源">DaoCloud 镜像源</h3>
-<p>你还可以从 DaoCloud 镜像源下载安装 Docker Engine，仅推荐中国大陆地区的用户使用。</p>
-<pre><code>curl -sSL https://get.daocloud.io/docker | sh
-</code></pre>
-<h2 id="配置-docker-镜像站">配置 Docker 镜像站</h2>
-<p>因为 Docker Hub 在国内的访问速度不理想，你可以通过配置 Docker 镜像站加快访问速度，仅推荐中国大陆地区的用户使用。</p>
-<pre><code>curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io
-</code></pre>
-<p>该脚本可以将 --registry-mirror 加入到你的 Docker 配置文件 /etc/docker/daemon.json 中。适用于 Ubuntu14.04、Debian、CentOS6 、CentOS7、Fedora、Arch Linux、openSUSE Leap 42.1，其他版本可能有细微不同。更多详情请访问文档。</p>
-<h2 id="卸载">卸载</h2>
-<p>卸载 Docker Engine</p>
-<pre><code>sudo apt-get purge docker-ce docker-ce-cli containerd.io
-</code></pre>
-<p>卸载完成之后，镜像、容器、存储卷、自定义配置文件不会自动删除。你可以执行下面的命令，手动删除它们</p>
-<pre><code> sudo rm -rf /var/lib/docker
- sudo rm -rf /var/lib/containerd
 </code></pre>
 ]]></content>
     </entry>
