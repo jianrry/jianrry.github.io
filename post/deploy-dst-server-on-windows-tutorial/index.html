@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://blog.jianrry.com/favicon.ico?v=1622611552560">
+<link rel="shortcut icon" href="https://blog.jianrry.com/favicon.ico?v=1622621120201">
 <link rel="stylesheet" href="https://blog.jianrry.com/styles/main.css">
 
 
@@ -38,8 +38,8 @@ Step3：拷贝存档
 
 SteamCMD
 
-Step1：下载 SteamCMD
-Step2：解压 S..." />
+Step1：下载并解压 SteamCMD
+Step2：创..." />
     <meta name="keywords" content="dst,windows,steam" />
   </head>
   <body>
@@ -49,7 +49,7 @@ Step2：解压 S..." />
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://blog.jianrry.com">
-        <img src="https://blog.jianrry.com/images/avatar.png?v=1622611552560" class="site-logo">
+        <img src="https://blog.jianrry.com/images/avatar.png?v=1622621120201" class="site-logo">
         <h1 class="site-title">Jianrry</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -136,10 +136,9 @@ Step2：解压 S..." />
 </li>
 <li><a href="#steamcmd">SteamCMD</a>
 <ul>
-<li><a href="#step1%E4%B8%8B%E8%BD%BD-steamcmd">Step1：下载 SteamCMD</a></li>
-<li><a href="#step2%E8%A7%A3%E5%8E%8B-steamcmd">Step2：解压 SteamCMD</a></li>
-<li><a href="#step3%E5%88%9B%E5%BB%BA-dstbat-%E6%96%87%E4%BB%B6">Step3：创建 <code>dst.bat</code> 文件</a></li>
-<li><a href="#step4%E5%90%AF%E5%8A%A8%E4%B8%93%E5%B1%9E%E6%9C%8D%E5%8A%A1%E5%99%A8">Step4：启动专属服务器</a></li>
+<li><a href="#step1%E4%B8%8B%E8%BD%BD%E5%B9%B6%E8%A7%A3%E5%8E%8B-steamcmd">Step1：下载并解压 SteamCMD</a></li>
+<li><a href="#step2%E5%88%9B%E5%BB%BA-dstbat-%E6%96%87%E4%BB%B6">Step2：创建 <code>dst.bat</code> 文件</a></li>
+<li><a href="#step3%E5%90%AF%E5%8A%A8%E4%B8%93%E5%B1%9E%E6%9C%8D%E5%8A%A1%E5%99%A8">Step3：启动专属服务器</a></li>
 </ul>
 </li>
 </ul>
@@ -176,13 +175,11 @@ Step2：解压 S..." />
 <p>黏贴到上面创建的<code>MyDediServer</code>文件夹中。</p>
 <figure data-type="image" tabindex="12"><img src="https://drive.jianrry.com/image/dst-server12.jpg?raw" alt="" loading="lazy"></figure>
 <h2 id="steamcmd">SteamCMD</h2>
-<h3 id="step1下载-steamcmd">Step1：下载 SteamCMD</h3>
+<h3 id="step1下载并解压-steamcmd">Step1：下载并解压 SteamCMD</h3>
 <p>下载地址：<a href="https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip">https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip</a></p>
-<p>下载完成之后，你会得到一个名为<code>steamcmd.zip</code>的压缩包。</p>
-<h3 id="step2解压-steamcmd">Step2：解压 SteamCMD</h3>
-<p>将<code>steamcmd.zip</code>移动到 C 盘的根目录下，然后解压这个压缩包。</p>
+<p>在 C 盘的根目录下，创建一个名为 <code>steamcmd</code>的文件夹，将下载完成后得到的一个名为 <code>steamcmd.zip</code> 的压缩包解压到此文件夹。</p>
 <figure data-type="image" tabindex="13"><img src="https://drive.jianrry.com/image/dst-server13.jpg?raw" alt="" loading="lazy"></figure>
-<h3 id="step3创建-dstbat-文件">Step3：创建 <code>dst.bat</code> 文件</h3>
+<h3 id="step2创建-dstbat-文件">Step2：创建 <code>dst.bat</code> 文件</h3>
 <p>点击鼠标右键，新建一个文本文档，重命名为<code>dst.bat</code>。</p>
 <p>复制下面的代码，并黏贴到 <code>dst.bat</code>，然后保存。</p>
 <pre><code>c:\steamcmd\steamcmd.exe +login anonymous +app_update 343050 validate +quit
@@ -190,7 +187,7 @@ cd /D &quot;c:\steamcmd\steamapps\common\Don't Starve Together Dedicated Server\
 start dontstarve_dedicated_server_nullrenderer -console -cluster MyDediServer -shard Master
 start dontstarve_dedicated_server_nullrenderer -console -cluster MyDediServer -shard Caves
 </code></pre>
-<h3 id="step4启动专属服务器">Step4：启动专属服务器</h3>
+<h3 id="step3启动专属服务器">Step3：启动专属服务器</h3>
 <p>双击<code>dst.bat</code>，会自动下载饥荒联机版的专用服务器文件。</p>
 <p>下载完成之后，会自动启动饥荒联机版的专用服务器（包括森林和洞穴）。</p>
 <figure data-type="image" tabindex="14"><img src="https://drive.jianrry.com/image/dst-server14.jpg?raw" alt="" loading="lazy"></figure>

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://blog.jianrry.com</id>
     <title>Jianrry</title>
-    <updated>2021-06-02T05:25:55.183Z</updated>
+    <updated>2021-06-02T08:05:51.673Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://blog.jianrry.com"/>
     <link rel="self" href="https://blog.jianrry.com/atom.xml"/>
@@ -10,14 +10,14 @@
     <icon>https://blog.jianrry.com/favicon.ico</icon>
     <rights>All rights reserved 2021, Jianrry</rights>
     <entry>
-        <title type="html"><![CDATA[饥荒联机版专用服务器部署教程（Windows 篇）]]></title>
-        <id>https://blog.jianrry.com/post/deploy-dst-server-on-windows-tutorial/</id>
-        <link href="https://blog.jianrry.com/post/deploy-dst-server-on-windows-tutorial/">
+        <title type="html"><![CDATA[饥荒联机版专用服务器部署教程（Linux 篇）]]></title>
+        <id>https://blog.jianrry.com/post/deploy-dst-server-on-linux-tutorial/</id>
+        <link href="https://blog.jianrry.com/post/deploy-dst-server-on-linux-tutorial/">
         </link>
-        <updated>2021-06-01T14:22:11.000Z</updated>
-        <summary type="html"><![CDATA[<p>本文介绍了如何在 Windows 上部署饥荒联机版专用服务器。</p>
+        <updated>2021-06-02T05:16:52.000Z</updated>
+        <summary type="html"><![CDATA[<p>本文介绍了如何在 Linux 上部署饥荒联机版专用服务器。已经在 ubuntu 21.04 amd64 上通过测试，建议使用相同的 linux 发行版。</p>
 ]]></summary>
-        <content type="html"><![CDATA[<p>本文介绍了如何在 Windows 上部署饥荒联机版专用服务器。</p>
+        <content type="html"><![CDATA[<p>本文介绍了如何在 Linux 上部署饥荒联机版专用服务器。已经在 ubuntu 21.04 amd64 上通过测试，建议使用相同的 linux 发行版。</p>
 <!-- more -->
 <p><ul class="markdownIt-TOC">
 <li>
@@ -27,13 +27,14 @@
 <li><a href="#step1%E5%90%AF%E5%8A%A8-%E9%A5%A5%E8%8D%92%E8%81%94%E6%9C%BA%E7%89%88">Step1：启动 饥荒联机版</a></li>
 <li><a href="#step2%E5%88%9B%E5%BB%BA%E6%B8%B8%E6%88%8F">Step2：创建游戏</a></li>
 <li><a href="#step3%E6%8B%B7%E8%B4%9D%E5%AD%98%E6%A1%A3">Step3：拷贝存档</a></li>
+<li><a href="#step4%E4%B8%8A%E4%BC%A0%E5%AD%98%E6%A1%A3">Step4：上传存档</a></li>
 </ul>
 </li>
 <li><a href="#steamcmd">SteamCMD</a>
 <ul>
-<li><a href="#step1%E4%B8%8B%E8%BD%BD-steamcmd">Step1：下载 SteamCMD</a></li>
-<li><a href="#step2%E8%A7%A3%E5%8E%8B-steamcmd">Step2：解压 SteamCMD</a></li>
-<li><a href="#step3%E5%88%9B%E5%BB%BA-dstbat-%E6%96%87%E4%BB%B6">Step3：创建 <code>dst.bat</code> 文件</a></li>
+<li><a href="#step1%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96">Step1：安装依赖</a></li>
+<li><a href="#step2%E4%B8%8B%E8%BD%BD%E5%B9%B6%E8%A7%A3%E5%8E%8B-steamcmd">Step2：下载并解压 SteamCMD</a></li>
+<li><a href="#step3%E4%B8%8B%E8%BD%BD-run_dedicated_serverssh">Step3：下载 <code>run_dedicated_servers.sh</code></a></li>
 <li><a href="#step4%E5%90%AF%E5%8A%A8%E4%B8%93%E5%B1%9E%E6%9C%8D%E5%8A%A1%E5%99%A8">Step4：启动专属服务器</a></li>
 </ul>
 </li>
@@ -70,14 +71,117 @@
 <figure data-type="image" tabindex="11"><img src="https://drive.jianrry.com/image/dst-server11.jpg?raw" alt="" loading="lazy"></figure>
 <p>黏贴到上面创建的<code>MyDediServer</code>文件夹中。</p>
 <figure data-type="image" tabindex="12"><img src="https://drive.jianrry.com/image/dst-server12.jpg?raw" alt="" loading="lazy"></figure>
+<h3 id="step4上传存档">Step4：上传存档</h3>
+<p><strong>注意事项：以上的全部步骤均可以在 Windows 中完成，后面的全部步骤（包括这一步）只能在 Linux 中完成。</strong></p>
+<p>在当前用户的家目录下，创建存档文件夹。</p>
+<pre><code> mkdir -p ~/.klei/DoNotStarveTogether/
+</code></pre>
+<p>将上面的<code>MyDediServer</code>文件夹上传到存档文件夹。</p>
 <h2 id="steamcmd">SteamCMD</h2>
-<h3 id="step1下载-steamcmd">Step1：下载 SteamCMD</h3>
+<h3 id="step1安装依赖">Step1：安装依赖</h3>
+<p>打开终端，输入下面的代码，然后回车。</p>
+<p>64 位：</p>
+<pre><code>sudo apt-get install -y libstdc++6:i386 libgcc1:i386 libcurl4-gnutls-dev:i386
+</code></pre>
+<p>32 位：</p>
+<pre><code>sudo apt-get install -y libstdc++6 libgcc1 libcurl4-gnutls-dev
+</code></pre>
+<h3 id="step2下载并解压-steamcmd">Step2：下载并解压 SteamCMD</h3>
+<p>在当前用户的家目录下，创建一个名为 <code>steamcmd</code> 的文件夹。</p>
+<pre><code>mkdir -p ~/steamcmd/
+</code></pre>
+<p>进入 <code>steamcmd</code>文件夹中。</p>
+<pre><code>cd ~/steamcmd/
+</code></pre>
+<p>下载 SteamCMD。</p>
+<pre><code>wget &quot;https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz&quot;
+</code></pre>
+<p>解压 SteamCMD。</p>
+<pre><code>tar -xvzf steamcmd_linux.tar.gz
+</code></pre>
+<h3 id="step3下载-run_dedicated_serverssh">Step3：下载 <code>run_dedicated_servers.sh</code></h3>
+<p>进入当前用户的根目录。</p>
+<pre><code>cd ~
+</code></pre>
+<p>下载 <code>run_dedicated_servers.sh</code>。</p>
+<pre><code>wget https://accounts.klei.com/assets/gamesetup/linux/run_dedicated_servers.sh
+</code></pre>
+<p>赋予 <code>run_dedicated_servers.sh</code> 可运行权限。</p>
+<pre><code>chmod u+x ~/run_dedicated_servers.sh
+</code></pre>
+<h3 id="step4启动专属服务器">Step4：启动专属服务器</h3>
+<p>运行 <code>run_dedicated_servers.sh</code> ，会自动下载饥荒联机版的专用服务器文件。</p>
+<p>下载完成之后，会自动启动饥荒联机版的专用服务器（包括森林和洞穴）。</p>
+<pre><code>bash ~/run_dedicated_servers.sh
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[饥荒联机版专用服务器部署教程（Windows 篇）]]></title>
+        <id>https://blog.jianrry.com/post/deploy-dst-server-on-windows-tutorial/</id>
+        <link href="https://blog.jianrry.com/post/deploy-dst-server-on-windows-tutorial/">
+        </link>
+        <updated>2021-06-01T14:22:11.000Z</updated>
+        <summary type="html"><![CDATA[<p>本文介绍了如何在 Windows 上部署饥荒联机版专用服务器。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>本文介绍了如何在 Windows 上部署饥荒联机版专用服务器。</p>
+<!-- more -->
+<p><ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E9%A5%A5%E8%8D%92%E8%81%94%E6%9C%BA%E7%89%88">饥荒联机版</a>
+<ul>
+<li><a href="#step1%E5%90%AF%E5%8A%A8-%E9%A5%A5%E8%8D%92%E8%81%94%E6%9C%BA%E7%89%88">Step1：启动 饥荒联机版</a></li>
+<li><a href="#step2%E5%88%9B%E5%BB%BA%E6%B8%B8%E6%88%8F">Step2：创建游戏</a></li>
+<li><a href="#step3%E6%8B%B7%E8%B4%9D%E5%AD%98%E6%A1%A3">Step3：拷贝存档</a></li>
+</ul>
+</li>
+<li><a href="#steamcmd">SteamCMD</a>
+<ul>
+<li><a href="#step1%E4%B8%8B%E8%BD%BD%E5%B9%B6%E8%A7%A3%E5%8E%8B-steamcmd">Step1：下载并解压 SteamCMD</a></li>
+<li><a href="#step2%E5%88%9B%E5%BB%BA-dstbat-%E6%96%87%E4%BB%B6">Step2：创建 <code>dst.bat</code> 文件</a></li>
+<li><a href="#step3%E5%90%AF%E5%8A%A8%E4%B8%93%E5%B1%9E%E6%9C%8D%E5%8A%A1%E5%99%A8">Step3：启动专属服务器</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</p>
+<h2 id="饥荒联机版">饥荒联机版</h2>
+<h3 id="step1启动-饥荒联机版">Step1：启动 饥荒联机版</h3>
+<p>在库中，选中这款游戏，然后点击“开始游戏”。</p>
+<h3 id="step2创建游戏">Step2：创建游戏</h3>
+<p>创建游戏。</p>
+<figure data-type="image" tabindex="1"><img src="https://drive.jianrry.com/image/dst-server1.jpg?raw" alt="" loading="lazy"></figure>
+<p>游戏风格。</p>
+<figure data-type="image" tabindex="2"><img src="https://drive.jianrry.com/image/dst-server2.jpg?raw" alt="" loading="lazy"></figure>
+<p>服务器基础设置。</p>
+<figure data-type="image" tabindex="3"><img src="https://drive.jianrry.com/image/dst-server3.jpg?raw" alt="" loading="lazy"></figure>
+<p>森林。</p>
+<figure data-type="image" tabindex="4"><img src="https://drive.jianrry.com/image/dst-server4.jpg?raw" alt="" loading="lazy"></figure>
+<p>洞穴。</p>
+<figure data-type="image" tabindex="5"><img src="https://drive.jianrry.com/image/dst-server5.jpg?raw" alt="" loading="lazy"></figure>
+<p>模组。</p>
+<figure data-type="image" tabindex="6"><img src="https://drive.jianrry.com/image/dst-server6.jpg?raw" alt="" loading="lazy"></figure>
+<p>断开连线。</p>
+<figure data-type="image" tabindex="7"><img src="https://drive.jianrry.com/image/dst-server7.jpg?raw" alt="" loading="lazy"></figure>
+<p>离开服务器。</p>
+<figure data-type="image" tabindex="8"><img src="https://drive.jianrry.com/image/dst-server8.jpg?raw" alt="" loading="lazy"></figure>
+<h3 id="step3拷贝存档">Step3：拷贝存档</h3>
+<p>依次打开“此电脑-文档-Klei-DoNotStarveTogether”，创建一个名为<code>MyDediServer</code>的文件夹。</p>
+<figure data-type="image" tabindex="9"><img src="https://drive.jianrry.com/image/dst-server9.jpg?raw" alt="" loading="lazy"></figure>
+<p>打开游戏，选中你的存档，进入存档文件夹。</p>
+<figure data-type="image" tabindex="10"><img src="https://drive.jianrry.com/image/dst-server10.jpg?raw" alt="" loading="lazy"></figure>
+<p>复制存档文件夹下面的全部文件。</p>
+<figure data-type="image" tabindex="11"><img src="https://drive.jianrry.com/image/dst-server11.jpg?raw" alt="" loading="lazy"></figure>
+<p>黏贴到上面创建的<code>MyDediServer</code>文件夹中。</p>
+<figure data-type="image" tabindex="12"><img src="https://drive.jianrry.com/image/dst-server12.jpg?raw" alt="" loading="lazy"></figure>
+<h2 id="steamcmd">SteamCMD</h2>
+<h3 id="step1下载并解压-steamcmd">Step1：下载并解压 SteamCMD</h3>
 <p>下载地址：<a href="https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip">https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip</a></p>
-<p>下载完成之后，你会得到一个名为<code>steamcmd.zip</code>的压缩包。</p>
-<h3 id="step2解压-steamcmd">Step2：解压 SteamCMD</h3>
-<p>将<code>steamcmd.zip</code>移动到 C 盘的根目录下，然后解压这个压缩包。</p>
+<p>在 C 盘的根目录下，创建一个名为 <code>steamcmd</code>的文件夹，将下载完成后得到的一个名为 <code>steamcmd.zip</code> 的压缩包解压到此文件夹。</p>
 <figure data-type="image" tabindex="13"><img src="https://drive.jianrry.com/image/dst-server13.jpg?raw" alt="" loading="lazy"></figure>
-<h3 id="step3创建-dstbat-文件">Step3：创建 <code>dst.bat</code> 文件</h3>
+<h3 id="step2创建-dstbat-文件">Step2：创建 <code>dst.bat</code> 文件</h3>
 <p>点击鼠标右键，新建一个文本文档，重命名为<code>dst.bat</code>。</p>
 <p>复制下面的代码，并黏贴到 <code>dst.bat</code>，然后保存。</p>
 <pre><code>c:\steamcmd\steamcmd.exe +login anonymous +app_update 343050 validate +quit
@@ -85,7 +189,7 @@ cd /D &quot;c:\steamcmd\steamapps\common\Don't Starve Together Dedicated Server\
 start dontstarve_dedicated_server_nullrenderer -console -cluster MyDediServer -shard Master
 start dontstarve_dedicated_server_nullrenderer -console -cluster MyDediServer -shard Caves
 </code></pre>
-<h3 id="step4启动专属服务器">Step4：启动专属服务器</h3>
+<h3 id="step3启动专属服务器">Step3：启动专属服务器</h3>
 <p>双击<code>dst.bat</code>，会自动下载饥荒联机版的专用服务器文件。</p>
 <p>下载完成之后，会自动启动饥荒联机版的专用服务器（包括森林和洞穴）。</p>
 <figure data-type="image" tabindex="14"><img src="https://drive.jianrry.com/image/dst-server14.jpg?raw" alt="" loading="lazy"></figure>
@@ -1265,187 +1369,6 @@ if __name__ == '__main__':
 <li>邮寄地址必须精确到 xx 号、xx 室，而且不能使用标点符号（我因为使用了括号进行备注，第一次审批就没有通过）。</li>
 <li>个人照片必须使用你的自拍照，其他照片不行（我因为使用了登记照，结果第二次审批又没有通过）。</li>
 </ol>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Docker Compose 运行 ArchiSteamFarm]]></title>
-        <id>https://blog.jianrry.com/post/docker-compose-asf/</id>
-        <link href="https://blog.jianrry.com/post/docker-compose-asf/">
-        </link>
-        <updated>2021-05-06T16:54:33.000Z</updated>
-        <summary type="html"><![CDATA[<p>你可以使用我的 Docker Compose文件，只需要修改少量的配置，花费10分钟不到就可以在服务器或者本机上运行 ArchiSteamFarm。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>你可以使用我的 Docker Compose文件，只需要修改少量的配置，花费10分钟不到就可以在服务器或者本机上运行 ArchiSteamFarm。</p>
-<!-- more -->
-<h2 id="特性">特性：</h2>
-<ol>
-<li>自动签发 SSL 证书，证书到期后自动续期</li>
-<li>HTTP 强制跳转到 HTTPS</li>
-<li>自动开启 IPC 服务，可以通过 IPC 面板管理</li>
-</ol>
-<h2 id="概述">概述：</h2>
-<p>一共有2个版本：Caddy 和 Nginx。它们在功能上基本上没有区别，推荐使用 Caddy 版本。</p>
-<h3 id="caddy-版本">Caddy 版本：</h3>
-<pre><code>├ docker-compose.yml	        
-│  
-├─asf											
-│  ├─config											
-│  │      ASF.json								
-│  │      IPC.config
-│  │      bot.json
-│  │      bot.maFile
-│  │      
-│  ├─logs
-│  └─plugins
-├
-└─caddy
-    │  Caddyfile
-    │  
-    ├─logs
-    └─srv
-
-docker-compose.yml：docker compose的配置文件
-
-asf：asf的文件夹
-
-	config：asf的配置文件夹
-
-		ASF.json：ASF的配置文件
-
-		IPC.config：ASF的IPC配置文件
-
-		bot.json：ASF的机器人配置文件
-
-		bot.maFile：ASF的机器人令牌文件
-		
-	logs：asf的日志文件夹
-	
-	plugins：asf的插件文件夹
-		
-caddy：caddy的文件夹
-
-Caddyfile：caddy的配置文件
-
-logs：caddy的日志文件夹
-
-srv：caddy的站点文件夹
-</code></pre>
-<h3 id="nginx-版本">Nginx 版本：</h3>
-<pre><code>├ docker-compose.yml
-│  
-├─acme.sh
-├
-├─asf											
-│  ├─config											
-│  │      ASF.json								
-│  │      IPC.config
-│  │      bot.json
-│  │      bot.maFile
-│  │      
-│  ├─logs
-│  └─plugins
-├
-└─nginx
-    ├─config
-    │      asf.domain.com.conf
-    │      
-    ├─logs
-    └─srv
-	
-docker-compose.yml：docker compose的配置文件
-
-acme.sh：acme的证书文件夹
-
-asf：asf的文件夹
-
-	config：asf的配置文件夹
-
-		ASF.json：ASF的配置文件
-
-		IPC.config：ASF的IPC配置文件
-
-		bot.json：ASF的机器人配置文件
-
-		bot.maFile：ASF的机器人令牌文件
-		
-	logs：asf的日志文件夹
-	
-	plugins：asf的插件文件夹
-		
-nginx：nginx的文件夹
-
-	config：nginx的配置文件夹
-	
-		asf.domain.com.conf 站点配置文件
-		
-	logs：nginx的日志文件夹
-	
-	srv：nginx的站点文件夹
-</code></pre>
-<h2 id="安装">安装</h2>
-<h3 id="step1安装-docker">Step1：安装 Docker</h3>
-<p>海外地区：</p>
-<pre><code> curl -fsSL https://get.docker.com -o get-docker.sh
- sudo sh get-docker.sh
-</code></pre>
-<p>中国大陆地区：</p>
-<pre><code>curl -sSL https://get.daocloud.io/docker | sh
-curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io
-</code></pre>
-<h3 id="step2安装-docker-compose">Step2：安装 Docker Compose</h3>
-<p>海外地区：</p>
-<pre><code> sudo curl -L &quot;https://github.com/docker/compose/releases/download/1.29.1/docker-compose-$(uname -s)-$(uname -m)&quot; -o /usr/local/bin/docker-compose
-
- sudo chmod +x /usr/local/bin/docker-compose
-</code></pre>
-<p>中国大陆地区：</p>
-<pre><code>curl -L https://get.daocloud.io/docker/compose/releases/download/1.29.1/docker-compose-`uname -s`-`uname -m` &gt; /usr/local/bin/docker-compose
-
-chmod +x /usr/local/bin/docker-compose
-</code></pre>
-<h3 id="step3下载文件然后解压">Step3：下载文件，然后解压</h3>
-<p>GitHub：<a href="https://github.com/jianrry/docker-compose-asf">https://github.com/jianrry/docker-compose-asf</a></p>
-<p>Caddy 版本：<a href="https://github.com/jianrry/docker-compose-asf/releases/download/1.0.0/caddy.zip">https://github.com/jianrry/docker-compose-asf/releases/download/1.0.0/caddy.zip</a></p>
-<p>Nginx 版本：<a href="https://github.com/jianrry/docker-compose-asf/releases/download/1.0.0/nginx.zip">https://github.com/jianrry/docker-compose-asf/releases/download/1.0.0/nginx.zip</a></p>
-<h3 id="step4修改配置文件">Step4：修改配置文件</h3>
-<p>Caddy 版本：</p>
-<ol>
-<li>将 <code>docker-compose.yml</code> 中的 CloudFlare 账号的电子邮箱和 API 密钥修改为你自己的。</li>
-<li>将 <code>caddy/Caddyfile</code> 中的域名修改为你自己的。</li>
-<li>将 <code>asf/config</code> 中的 <code>ASF.json</code>、<code>bot.json</code>、<code>bot.maFile</code> 修改为你自己的。</li>
-</ol>
-<p>Nginx 版本：</p>
-<ol>
-<li>将 <code>docker-compose.yml</code> 中的 CloudFlare 账号的电子邮箱和 API 密钥修改为你自己的。</li>
-<li>将 <code>nginx/config</code> 中的 <code>asf.domain.conf</code> 重命名，然后将其中的域名修改为你自己的。</li>
-<li>将 <code>asf/config</code> 中的 <code>ASF.json</code>、<code>bot.json</code>、<code>bot.maFile</code> 修改为你自己的。</li>
-</ol>
-<h3 id="step5创建容器然后启动">Step5：创建容器，然后启动</h3>
-<p>将文件上传到服务器上后，进入 <code>docker-compose.yml</code> 的所在目录。</p>
-<p>Caddy 版本：</p>
-<pre><code>docker-compose up
-</code></pre>
-<p>Nginx 版本：</p>
-<pre><code>sudo docker-compose run acme.sh --issue --dns dns_cf -d asf.domain.com
-
-docker-compose up
-</code></pre>
-<h2 id="常用命令">常用命令</h2>
-<p>构建镜像，并启动服务：</p>
-<pre><code>docker-compose up
-</code></pre>
-<p>查询实时日志：</p>
-<pre><code>docker-compose logs service_name
-</code></pre>
-<p>停止服务：</p>
-<pre><code>docker-compose stop service_name
-</code></pre>
-<p>启动服务：</p>
-<pre><code>docker-compose start service_name
-</code></pre>
-<p>删除服务：</p>
-<pre><code>docker-compose rm service_name
-</code></pre>
 ]]></content>
     </entry>
 </feed>
