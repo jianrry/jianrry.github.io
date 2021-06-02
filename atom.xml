@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://blog.jianrry.com</id>
     <title>Jianrry</title>
-    <updated>2021-06-02T08:12:27.348Z</updated>
+    <updated>2021-06-02T09:23:07.666Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://blog.jianrry.com"/>
     <link rel="self" href="https://blog.jianrry.com/atom.xml"/>
@@ -35,7 +35,7 @@
 <li><a href="#step1%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96">Step1：安装依赖</a></li>
 <li><a href="#step2%E4%B8%8B%E8%BD%BD%E5%B9%B6%E8%A7%A3%E5%8E%8B-steamcmd">Step2：下载并解压 SteamCMD</a></li>
 <li><a href="#step3%E4%B8%8B%E8%BD%BD-run_dedicated_serverssh">Step3：下载 <code>run_dedicated_servers.sh</code></a></li>
-<li><a href="#step4%E5%90%AF%E5%8A%A8%E4%B8%93%E5%B1%9E%E6%9C%8D%E5%8A%A1%E5%99%A8">Step4：启动专属服务器</a></li>
+<li><a href="#step4%E5%90%AF%E5%8A%A8%E4%B8%93%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8">Step4：启动专用服务器</a></li>
 </ul>
 </li>
 </ul>
@@ -109,7 +109,7 @@
 <p>赋予 <code>run_dedicated_servers.sh</code> 可运行权限。</p>
 <pre><code>chmod u+x ~/run_dedicated_servers.sh
 </code></pre>
-<h3 id="step4启动专属服务器">Step4：启动专属服务器</h3>
+<h3 id="step4启动专用服务器">Step4：启动专用服务器</h3>
 <p>运行 <code>run_dedicated_servers.sh</code> ，会自动下载饥荒联机版的专用服务器文件。</p>
 <p>下载完成之后，会自动启动饥荒联机版的专用服务器（包括森林和洞穴）。</p>
 <pre><code>bash ~/run_dedicated_servers.sh
@@ -140,7 +140,7 @@
 <ul>
 <li><a href="#step1%E4%B8%8B%E8%BD%BD%E5%B9%B6%E8%A7%A3%E5%8E%8B-steamcmd">Step1：下载并解压 SteamCMD</a></li>
 <li><a href="#step2%E5%88%9B%E5%BB%BA-dstbat-%E6%96%87%E4%BB%B6">Step2：创建 <code>dst.bat</code> 文件</a></li>
-<li><a href="#step3%E5%90%AF%E5%8A%A8%E4%B8%93%E5%B1%9E%E6%9C%8D%E5%8A%A1%E5%99%A8">Step3：启动专属服务器</a></li>
+<li><a href="#step3%E5%90%AF%E5%8A%A8%E4%B8%93%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8">Step3：启动专用服务器</a></li>
 </ul>
 </li>
 </ul>
@@ -189,7 +189,7 @@ cd /D &quot;c:\steamcmd\steamapps\common\Don't Starve Together Dedicated Server\
 start dontstarve_dedicated_server_nullrenderer -console -cluster MyDediServer -shard Master
 start dontstarve_dedicated_server_nullrenderer -console -cluster MyDediServer -shard Caves
 </code></pre>
-<h3 id="step3启动专属服务器">Step3：启动专属服务器</h3>
+<h3 id="step3启动专用服务器">Step3：启动专用服务器</h3>
 <p>双击<code>dst.bat</code>，会自动下载饥荒联机版的专用服务器文件。</p>
 <p>下载完成之后，会自动启动饥荒联机版的专用服务器（包括森林和洞穴）。</p>
 <figure data-type="image" tabindex="14"><img src="https://drive.jianrry.com/image/dst-server14.jpg?raw" alt="" loading="lazy"></figure>
