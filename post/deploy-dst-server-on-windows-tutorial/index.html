@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>饥荒联机版专用服务器部署教程（Windows 篇） | Jianrry</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://blog.jianrry.com/favicon.ico?v=1622604749822">
+<link rel="stylesheet" href="https://blog.jianrry.com/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="本文介绍了如何部署饥荒联机版专用服务器。
+
+
+
+
+饥荒联机版
+
+Step1：启动 饥荒联机版
+Step2：创建游戏
+Step3：拷贝存档
+
+
+SteamCMD
+
+Step1：下载 SteamCMD
+Step2：解压 SteamCMD
+Ste..." />
+    <meta name="keywords" content="dst,windows,steam" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://blog.jianrry.com">
+        <img src="https://blog.jianrry.com/images/avatar.png?v=1622604749822" class="site-logo">
+        <h1 class="site-title">Jianrry</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav" target="_blank">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav" target="_blank">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav" target="_blank">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav" target="_blank">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/jianrry" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://blog.jianrry.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">饥荒联机版专用服务器部署教程（Windows 篇）</h2>
+            <div class="post-date">2021-06-01</div>
+            
+              <div class="feature-container" style="background-image: url('https://drive.jianrry.com/image/dst-cover-picture.jpg?raw')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <p>本文介绍了如何部署饥荒联机版专用服务器。</p>
+<!-- more -->
+<p><ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E9%A5%A5%E8%8D%92%E8%81%94%E6%9C%BA%E7%89%88">饥荒联机版</a>
+<ul>
+<li><a href="#step1%E5%90%AF%E5%8A%A8-%E9%A5%A5%E8%8D%92%E8%81%94%E6%9C%BA%E7%89%88">Step1：启动 饥荒联机版</a></li>
+<li><a href="#step2%E5%88%9B%E5%BB%BA%E6%B8%B8%E6%88%8F">Step2：创建游戏</a></li>
+<li><a href="#step3%E6%8B%B7%E8%B4%9D%E5%AD%98%E6%A1%A3">Step3：拷贝存档</a></li>
+</ul>
+</li>
+<li><a href="#steamcmd">SteamCMD</a>
+<ul>
+<li><a href="#step1%E4%B8%8B%E8%BD%BD-steamcmd">Step1：下载 SteamCMD</a></li>
+<li><a href="#step2%E8%A7%A3%E5%8E%8B-steamcmd">Step2：解压 SteamCMD</a></li>
+<li><a href="#step3%E5%88%9B%E5%BB%BA-dstbat-%E6%96%87%E4%BB%B6">Step3：创建 dst.bat` 文件</a></li>
+<li><a href="#step4%E5%90%AF%E5%8A%A8%E4%B8%93%E5%B1%9E%E6%9C%8D%E5%8A%A1%E5%99%A8">Step4：启动专属服务器</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</p>
+<h2 id="饥荒联机版">饥荒联机版</h2>
+<h3 id="step1启动-饥荒联机版">Step1：启动 饥荒联机版</h3>
+<p>在库中，选中这款游戏，然后点击“开始游戏”。</p>
+<h3 id="step2创建游戏">Step2：创建游戏</h3>
+<p>创建游戏。</p>
+<figure data-type="image" tabindex="1"><img src="https://drive.jianrry.com/image/dst-server1.jpg?raw" alt="" loading="lazy"></figure>
+<p>游戏风格。</p>
+<figure data-type="image" tabindex="2"><img src="https://drive.jianrry.com/image/dst-server2.jpg?raw" alt="" loading="lazy"></figure>
+<p>服务器基础设置。</p>
+<figure data-type="image" tabindex="3"><img src="https://drive.jianrry.com/image/dst-server3.jpg?raw" alt="" loading="lazy"></figure>
+<p>森林。</p>
+<figure data-type="image" tabindex="4"><img src="https://drive.jianrry.com/image/dst-server4.jpg?raw" alt="" loading="lazy"></figure>
+<p>洞穴。</p>
+<figure data-type="image" tabindex="5"><img src="https://drive.jianrry.com/image/dst-server5.jpg?raw" alt="" loading="lazy"></figure>
+<p>模组。</p>
+<figure data-type="image" tabindex="6"><img src="https://drive.jianrry.com/image/dst-server6.jpg?raw" alt="" loading="lazy"></figure>
+<p>断开连线。</p>
+<figure data-type="image" tabindex="7"><img src="https://drive.jianrry.com/image/dst-server7.jpg?raw" alt="" loading="lazy"></figure>
+<p>离开服务器。</p>
+<figure data-type="image" tabindex="8"><img src="https://drive.jianrry.com/image/dst-server8.jpg?raw" alt="" loading="lazy"></figure>
+<h3 id="step3拷贝存档">Step3：拷贝存档</h3>
+<p>依次打开“此电脑-文档-Klei-DoNotStarveTogether”，创建一个名为<code>MyDediServer</code>的文件夹。</p>
+<figure data-type="image" tabindex="9"><img src="https://drive.jianrry.com/image/dst-server9.jpg?raw" alt="" loading="lazy"></figure>
+<p>打开游戏，选中你的存档，进入存档文件夹。</p>
+<figure data-type="image" tabindex="10"><img src="https://drive.jianrry.com/image/dst-server10.jpg?raw" alt="" loading="lazy"></figure>
+<p>复制存档文件夹下面的全部文件。</p>
+<figure data-type="image" tabindex="11"><img src="https://drive.jianrry.com/image/dst-server11.jpg?raw" alt="" loading="lazy"></figure>
+<p>黏贴到上面创建的<code>MyDediServer</code>文件夹中。</p>
+<figure data-type="image" tabindex="12"><img src="https://drive.jianrry.com/image/dst-server12.jpg?raw" alt="" loading="lazy"></figure>
+<h2 id="steamcmd">SteamCMD</h2>
+<h3 id="step1下载-steamcmd">Step1：下载 SteamCMD</h3>
+<p>下载地址：<a href="https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip">https://steamcdn-a.akamaihd.net/client/installer/steamcmd.zip</a></p>
+<p>下载完成之后，你会得到一个名为<code>steamcmd.zip</code>的压缩包。</p>
+<h3 id="step2解压-steamcmd">Step2：解压 SteamCMD</h3>
+<p>将<code>steamcmd.zip</code>移动到 C 盘的根目录下，然后解压这个压缩包。</p>
+<figure data-type="image" tabindex="13"><img src="https://drive.jianrry.com/image/dst-server13.jpg?raw" alt="" loading="lazy"></figure>
+<h3 id="step3创建-dstbat-文件">Step3：创建 dst.bat` 文件</h3>
+<p>点击鼠标右键，新建一个文本文档，重命名为<code>dst.bat</code>。</p>
+<p>复制下面的代码，并黏贴到 <code>dst.bat</code>，然后保存。</p>
+<pre><code>c:\steamcmd\steamcmd.exe +login anonymous +app_update 343050 validate +quit
+cd /D &quot;c:\steamcmd\steamapps\common\Don't Starve Together Dedicated Server\bin&quot;
+start dontstarve_dedicated_server_nullrenderer -console -cluster MyDediServer -shard Master
+start dontstarve_dedicated_server_nullrenderer -console -cluster MyDediServer -shard Caves
+</code></pre>
+<h3 id="step4启动专属服务器">Step4：启动专属服务器</h3>
+<p>双击<code>dst.bat</code>，会自动下载饥荒联机版的专用服务器文件。</p>
+<p>下载完成之后，会自动启动饥荒联机版的专用服务器（包括森林和洞穴）。</p>
+<figure data-type="image" tabindex="14"><img src="https://drive.jianrry.com/image/dst-server14.jpg?raw" alt="" loading="lazy"></figure>
+<figure data-type="image" tabindex="15"><img src="https://drive.jianrry.com/image/dst-server15.jpg?raw" alt="" loading="lazy"></figure>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://blog.jianrry.com/tag/dst/" class="tag">
+                    dst
+                  </a>
+                
+                  <a href="https://blog.jianrry.com/tag/windows/" class="tag">
+                    windows
+                  </a>
+                
+                  <a href="https://blog.jianrry.com/tag/steam/" class="tag">
+                    steam
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://blog.jianrry.com/post/windows-commands/">
+                  <h3 class="post-title">
+                    Windows 常用命令
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '621354180a33de9b9548',
+        clientSecret: '429ebafe001bd88b0d6775ba4accab0df04b1638',
+        repo: 'jianrry.github.io',
+        owner: 'Jianrry',
+        admin: ['Jianrry'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
