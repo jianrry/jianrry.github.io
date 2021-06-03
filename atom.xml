@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://blog.jianrry.com</id>
     <title>Jianrry</title>
-    <updated>2021-06-02T09:23:07.666Z</updated>
+    <updated>2021-06-03T07:45:26.873Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://blog.jianrry.com"/>
     <link rel="self" href="https://blog.jianrry.com/atom.xml"/>
@@ -213,6 +213,7 @@ start dontstarve_dedicated_server_nullrenderer -console -cluster MyDediServer -s
 <li><a href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">常用命令</a>
 <ul>
 <li><a href="#dir">dir</a></li>
+<li><a href="#tree">tree</a></li>
 <li><a href="#md">md</a></li>
 <li><a href="#rd">rd</a></li>
 <li><a href="#cd">cd</a></li>
@@ -255,6 +256,60 @@ Mode                 LastWriteTime         Length Name
 -a----         2021/5/22     16:09           1609 electerm.lnk
 -a----         2021/5/28     17:05           1050 Notepad++.lnk
 -a----         2021/5/27     17:13           1385 v2rayN.lnk
+</code></pre>
+<h3 id="tree">tree</h3>
+<p>说明：显示文件或目录的树状图</p>
+<p>语法：</p>
+<pre><code>tree [&lt;drive&gt;:][&lt;path&gt;]
+</code></pre>
+<p>实例：</p>
+<pre><code>tree
+</code></pre>
+<p>预览：</p>
+<pre><code>PS C:\Users\admin\Documents\Gridea&gt; tree
+文件夹 PATH 列表
+卷序列号为 069C-7679
+C:.
+├─config
+├─images
+├─output
+├─post-images
+├─posts
+├─static
+└─themes
+    ├─fly
+    │  ├─assets
+    │  │  ├─media
+    │  │  │  └─fonts
+    │  │  └─styles
+    │  │      ├─_blocks
+    │  │      └─_core
+    │  └─templates
+    │      └─includes
+    ├─notes
+    │  ├─assets
+    │  │  └─styles
+    │  │      ├─abstracts
+    │  │      ├─components
+    │  │      └─lib
+    │  └─templates
+    │      └─includes
+    ├─paper
+    │  ├─assets
+    │  │  ├─media
+    │  │  │  └─images
+    │  │  └─styles
+    │  │      └─_core
+    │  └─templates
+    │      └─_blocks
+    └─simple
+        ├─assets
+        │  ├─media
+        │  │  └─images
+        │  └─styles
+        │      └─_core
+        └─templates
+            └─_blocks
 </code></pre>
 <h3 id="md">md</h3>
 <p>说明：make directory（创建目录）的缩写。创建目录或子目录。</p>

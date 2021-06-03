@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://blog.jianrry.com/favicon.ico?v=1622625784398">
+<link rel="shortcut icon" href="https://blog.jianrry.com/favicon.ico?v=1622706298213">
 <link rel="stylesheet" href="https://blog.jianrry.com/styles/main.css">
 
 
@@ -33,6 +33,7 @@
 常用命令
 
 dir
+tree
 md
 rd
 cd
@@ -49,7 +50,7 @@ ipconfig
 
 打开命令提示符的方式
 
-同时按下“Windows + R”键，打..." />
+同时按下“Windows + ..." />
     <meta name="keywords" content="windows" />
   </head>
   <body>
@@ -59,7 +60,7 @@ ipconfig
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://blog.jianrry.com">
-        <img src="https://blog.jianrry.com/images/avatar.png?v=1622625784398" class="site-logo">
+        <img src="https://blog.jianrry.com/images/avatar.png?v=1622706298213" class="site-logo">
         <h1 class="site-title">Jianrry</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -141,6 +142,7 @@ ipconfig
 <li><a href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4">常用命令</a>
 <ul>
 <li><a href="#dir">dir</a></li>
+<li><a href="#tree">tree</a></li>
 <li><a href="#md">md</a></li>
 <li><a href="#rd">rd</a></li>
 <li><a href="#cd">cd</a></li>
@@ -183,6 +185,60 @@ Mode                 LastWriteTime         Length Name
 -a----         2021/5/22     16:09           1609 electerm.lnk
 -a----         2021/5/28     17:05           1050 Notepad++.lnk
 -a----         2021/5/27     17:13           1385 v2rayN.lnk
+</code></pre>
+<h3 id="tree">tree</h3>
+<p>说明：显示文件或目录的树状图</p>
+<p>语法：</p>
+<pre><code>tree [&lt;drive&gt;:][&lt;path&gt;]
+</code></pre>
+<p>实例：</p>
+<pre><code>tree
+</code></pre>
+<p>预览：</p>
+<pre><code>PS C:\Users\admin\Documents\Gridea&gt; tree
+文件夹 PATH 列表
+卷序列号为 069C-7679
+C:.
+├─config
+├─images
+├─output
+├─post-images
+├─posts
+├─static
+└─themes
+    ├─fly
+    │  ├─assets
+    │  │  ├─media
+    │  │  │  └─fonts
+    │  │  └─styles
+    │  │      ├─_blocks
+    │  │      └─_core
+    │  └─templates
+    │      └─includes
+    ├─notes
+    │  ├─assets
+    │  │  └─styles
+    │  │      ├─abstracts
+    │  │      ├─components
+    │  │      └─lib
+    │  └─templates
+    │      └─includes
+    ├─paper
+    │  ├─assets
+    │  │  ├─media
+    │  │  │  └─images
+    │  │  └─styles
+    │  │      └─_core
+    │  └─templates
+    │      └─_blocks
+    └─simple
+        ├─assets
+        │  ├─media
+        │  │  └─images
+        │  └─styles
+        │      └─_core
+        └─templates
+            └─_blocks
 </code></pre>
 <h3 id="md">md</h3>
 <p>说明：make directory（创建目录）的缩写。创建目录或子目录。</p>
