@@ -2,13 +2,525 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://blog.jianrry.com</id>
     <title>Jianrry</title>
-    <updated>2021-06-03T07:45:26.873Z</updated>
+    <updated>2021-06-05T16:32:21.690Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://blog.jianrry.com"/>
     <link rel="self" href="https://blog.jianrry.com/atom.xml"/>
     <logo>https://blog.jianrry.com/images/avatar.png</logo>
     <icon>https://blog.jianrry.com/favicon.ico</icon>
     <rights>All rights reserved 2021, Jianrry</rights>
+    <entry>
+        <title type="html"><![CDATA[饥荒联机版专用服务器部署教程（配置篇）]]></title>
+        <id>https://blog.jianrry.com/post/dst-server-configuration/</id>
+        <link href="https://blog.jianrry.com/post/dst-server-configuration/">
+        </link>
+        <updated>2021-06-03T07:45:48.000Z</updated>
+        <summary type="html"><![CDATA[<p>本文介绍了饥荒联机版专用服务器的配置文件。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>本文介绍了饥荒联机版专用服务器的配置文件。</p>
+<!-- more -->
+<p><ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%89%8D%E8%A8%80">前言</a></li>
+<li><a href="#%E8%AE%BF%E9%97%AE%E4%BB%A4%E7%89%8C%E5%BF%85%E9%80%89">访问令牌（必选）</a></li>
+<li><a href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%BF%85%E9%80%89">服务器配置文件（必选）</a></li>
+<li><a href="#%E6%A3%AE%E6%9E%97%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%BF%85%E9%80%89">森林服务器配置文件（必选）</a></li>
+<li><a href="#%E6%A3%AE%E6%9E%97%E5%9C%B0%E5%BD%A2%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%BF%85%E9%80%89">森林地形配置文件（必选）</a></li>
+<li><a href="#%E6%A3%AE%E6%9E%97mod%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%BF%85%E9%80%89">森林Mod配置文件（必选）</a></li>
+<li><a href="#%E6%B4%9E%E7%A9%B4%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%BF%85%E9%80%89">洞穴服务器配置文件（必选）</a></li>
+<li><a href="#%E6%B4%9E%E7%A9%B4%E5%9C%B0%E5%BD%A2%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%BF%85%E9%80%89">洞穴地形配置文件（必选）</a></li>
+<li><a href="#%E6%B4%9E%E7%A9%B4mod%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%BF%85%E9%80%89">洞穴Mod配置文件（必选）</a></li>
+<li><a href="#klei-user-id-%E5%92%8C-steam-64%E4%BD%8D-id">Klei User ID 和 Steam 64位 ID</a></li>
+<li><a href="#%E7%AE%A1%E7%90%86%E5%91%98%E5%90%8D%E5%8D%95%E5%8F%AF%E9%80%89">管理员名单（可选）</a></li>
+<li><a href="#%E7%99%BD%E5%90%8D%E5%8D%95%E5%8F%AF%E9%80%89">白名单（可选）</a>
+<ul>
+<li><a href="#step1%E6%B7%BB%E5%8A%A0-klei-user-id">Step1：添加 Klei User ID</a></li>
+<li><a href="#step2%E4%BF%AE%E6%94%B9%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AE%BE%E7%BD%AE">Step2：修改服务器设置</a></li>
+</ul>
+</li>
+<li><a href="#%E9%BB%91%E5%90%8D%E5%8D%95%E5%8F%AF%E9%80%89">黑名单（可选）</a></li>
+<li><a href="#%E6%96%87%E4%BB%B6%E6%B1%87%E6%80%BB">文件汇总</a></li>
+</ul>
+</li>
+</ul>
+</p>
+<h2 id="前言">前言</h2>
+<p>Windows 和 Linux 的饥荒联机版专用服务器的配置文件是通用的，唯一的区别是 配置文件夹的地址不同。</p>
+<p>Windows：</p>
+<pre><code>此电脑\文档\Klei\DoNotStarveTogether\MyDediServer
+</code></pre>
+<p>Linux：</p>
+<pre><code>~/.klei/DoNotStarveTogether/MyDediServer
+</code></pre>
+<p>饥荒联机版客户端和专用服务器的配置文件同样是通用的，你可以使用客户端的存档文件夹下的配置文件，替代专用服务器的配置文件。</p>
+<p>你只需要手动创建 管理员名单（admin.txt）、白名单（whitelist.txt）、黑名单（blocklist.txt），其他的全部配置文件都可以通过客户端生成。</p>
+<h2 id="访问令牌必选">访问令牌（必选）</h2>
+<p>没有访问令牌，就无法启动服务器。访问令牌的主人，自动拥有管理员权限。</p>
+<p>打开 <a href="https://accounts.klei.com/login">官网</a>，登录你的 Klei 账户。然后点击<a href="https://accounts.klei.com/account/game/servers?game=DontStarveTogether">此处</a>，输入服务器名，生成访问令牌。</p>
+<figure data-type="image" tabindex="1"><img src="https://drive.jianrry.com/image/dst-server20.jpg?raw" alt="" loading="lazy"></figure>
+<h2 id="服务器配置文件必选">服务器配置文件（必选）</h2>
+<p><strong>建议使用饥荒联机版客户端生成的服务器配置文件，不要手动修改配置文件，下面的服务器配置文件仅供参考。</strong></p>
+<p><strong>cluster.ini</strong></p>
+<pre><code>[STEAM]
+steam_group_admins = false
+steam_group_id = 40496043
+steam_group_only = false
+
+
+[GAMEPLAY]
+game_mode = survival
+max_players = 6
+pvp = false
+pause_when_empty = true
+
+
+[NETWORK]
+lan_only_cluster = false
+cluster_intention = social
+cluster_password = 
+cluster_description = 
+cluster_name = Jianrry的世界
+offline_cluster = false
+cluster_language = zh
+
+
+[MISC]
+console_enabled = true
+
+
+[SHARD]
+shard_enabled = true
+bind_ip = 127.0.0.1
+master_ip = 127.0.0.1
+master_port = 10888
+cluster_key = defaultPass
+</code></pre>
+<p>steam_group_admins：steam 组的管理员是否拥有服务器的管理员权限。默认值是 false。<br>
+steam_group_id：steam 组的 ID。<br>
+steam_group_only：是否只允许 steam 组的成员加入。</p>
+<p>game_mode：游戏模式。<br>
+max_players：服务器最大人数。<br>
+pvp： 是否开启 pvp。默认值是 false。<br>
+pause_when_empty：是否暂停时间，当服务器没人时。默认值是 true。</p>
+<p>lan_only_cluster：是否只允许局域网的玩家加入。默认值是 false。<br>
+cluster_intention：游戏风格。<br>
+cluster_password：服务器密码。默认值是空。<br>
+cluster_description：服务器描述。默认值是空。<br>
+cluster_name：服务器名。<br>
+offline_cluster：是否离线。默认值是 false。<br>
+cluster_language：服务器语言。</p>
+<p>console_enabled：是否开启控制台。默认值是 true。</p>
+<p>shard_enabled：默认值是 true。<br>
+bind_ip ：默认值是 127.0.0.1。<br>
+master_ip ：默认值是 127.0.0.1。<br>
+master_port ：默认值是 10888。<br>
+cluster_key：默认值是defaultPass。</p>
+<h2 id="森林服务器配置文件必选">森林服务器配置文件（必选）</h2>
+<p><strong>建议使用饥荒联机版客户端生成的服务器配置文件，不要手动修改配置文件，下面的服务器配置文件仅供参考。</strong></p>
+<p><strong>server.ini</strong></p>
+<pre><code>[NETWORK]
+server_port = 10999
+
+
+[SHARD]
+is_master = true
+
+
+[ACCOUNT]
+encode_user_path = true
+</code></pre>
+<h2 id="森林地形配置文件必选">森林地形配置文件（必选）</h2>
+<p><strong>建议使用饥荒联机版客户端生成的服务器配置文件，不要手动修改配置文件，下面的服务器配置文件仅供参考。</strong></p>
+<p><strong>leveldataoverride.lua</strong></p>
+<pre><code>return {
+  desc=&quot;标准《饥荒》体验。&quot;,
+  hideminimap=false,
+  id=&quot;SURVIVAL_TOGETHER&quot;,
+  location=&quot;forest&quot;,
+  max_playlist_position=999,
+  min_playlist_position=0,
+  name=&quot;标准森林&quot;,
+  numrandom_set_pieces=4,
+  override_level_string=false,
+  overrides={
+    alternatehunt=&quot;default&quot;,
+    angrybees=&quot;default&quot;,
+    antliontribute=&quot;default&quot;,
+    autumn=&quot;default&quot;,
+    bats_setting=&quot;default&quot;,
+    bearger=&quot;default&quot;,
+    beefalo=&quot;default&quot;,
+    beefaloheat=&quot;default&quot;,
+    beequeen=&quot;default&quot;,
+    bees=&quot;default&quot;,
+    bees_setting=&quot;default&quot;,
+    berrybush=&quot;default&quot;,
+    birds=&quot;default&quot;,
+    boons=&quot;default&quot;,
+    branching=&quot;default&quot;,
+    brightmarecreatures=&quot;default&quot;,
+    bunnymen_setting=&quot;default&quot;,
+    butterfly=&quot;default&quot;,
+    buzzard=&quot;default&quot;,
+    cactus=&quot;default&quot;,
+    carrot=&quot;default&quot;,
+    carrots_regrowth=&quot;default&quot;,
+    catcoon=&quot;default&quot;,
+    catcoons=&quot;default&quot;,
+    chess=&quot;default&quot;,
+    cookiecutters=&quot;default&quot;,
+    crabking=&quot;default&quot;,
+    day=&quot;default&quot;,
+    deciduousmonster=&quot;default&quot;,
+    deciduoustree_regrowth=&quot;default&quot;,
+    deerclops=&quot;default&quot;,
+    dragonfly=&quot;default&quot;,
+    dropeverythingondespawn=&quot;default&quot;,
+    evergreen_regrowth=&quot;default&quot;,
+    extrastartingitems=&quot;default&quot;,
+    fishschools=&quot;default&quot;,
+    flint=&quot;default&quot;,
+    flowers=&quot;default&quot;,
+    flowers_regrowth=&quot;default&quot;,
+    frograin=&quot;default&quot;,
+    frogs=&quot;default&quot;,
+    fruitfly=&quot;default&quot;,
+    gnarwail=&quot;default&quot;,
+    goosemoose=&quot;default&quot;,
+    grass=&quot;default&quot;,
+    grassgekkos=&quot;default&quot;,
+    has_ocean=true,
+    hound_mounds=&quot;default&quot;,
+    houndmound=&quot;default&quot;,
+    hounds=&quot;default&quot;,
+    hunt=&quot;default&quot;,
+    keep_disconnected_tiles=true,
+    klaus=&quot;default&quot;,
+    krampus=&quot;default&quot;,
+    layout_mode=&quot;LinkNodesByKeys&quot;,
+    liefs=&quot;default&quot;,
+    lightning=&quot;default&quot;,
+    lightninggoat=&quot;default&quot;,
+    loop=&quot;default&quot;,
+    lureplants=&quot;default&quot;,
+    malbatross=&quot;default&quot;,
+    marshbush=&quot;default&quot;,
+    merm=&quot;default&quot;,
+    merms=&quot;default&quot;,
+    meteorshowers=&quot;default&quot;,
+    meteorspawner=&quot;default&quot;,
+    moles=&quot;default&quot;,
+    moles_setting=&quot;default&quot;,
+    moon_berrybush=&quot;default&quot;,
+    moon_bullkelp=&quot;default&quot;,
+    moon_carrot=&quot;default&quot;,
+    moon_fissure=&quot;default&quot;,
+    moon_fruitdragon=&quot;default&quot;,
+    moon_hotspring=&quot;default&quot;,
+    moon_rock=&quot;default&quot;,
+    moon_sapling=&quot;default&quot;,
+    moon_spider=&quot;default&quot;,
+    moon_spiders=&quot;default&quot;,
+    moon_starfish=&quot;default&quot;,
+    moon_tree=&quot;default&quot;,
+    moon_tree_regrowth=&quot;default&quot;,
+    mosquitos=&quot;default&quot;,
+    mushroom=&quot;default&quot;,
+    mutated_hounds=&quot;default&quot;,
+    no_joining_islands=true,
+    no_wormholes_to_disconnected_tiles=true,
+    ocean_bullkelp=&quot;default&quot;,
+    ocean_seastack=&quot;ocean_default&quot;,
+    ocean_shoal=&quot;default&quot;,
+    ocean_waterplant=&quot;ocean_default&quot;,
+    ocean_wobsterden=&quot;default&quot;,
+    penguins=&quot;default&quot;,
+    penguins_moon=&quot;default&quot;,
+    perd=&quot;default&quot;,
+    petrification=&quot;default&quot;,
+    pigs=&quot;default&quot;,
+    pigs_setting=&quot;default&quot;,
+    ponds=&quot;default&quot;,
+    prefabswaps_start=&quot;default&quot;,
+    rabbits=&quot;default&quot;,
+    rabbits_setting=&quot;default&quot;,
+    reeds=&quot;default&quot;,
+    regrowth=&quot;default&quot;,
+    roads=&quot;default&quot;,
+    rock=&quot;default&quot;,
+    rock_ice=&quot;default&quot;,
+    saltstack_regrowth=&quot;default&quot;,
+    sapling=&quot;default&quot;,
+    season_start=&quot;default&quot;,
+    seasonalstartingitems=&quot;default&quot;,
+    shadowcreatures=&quot;default&quot;,
+    sharks=&quot;default&quot;,
+    spawnprotection=&quot;default&quot;,
+    specialevent=&quot;default&quot;,
+    spider_warriors=&quot;default&quot;,
+    spiderqueen=&quot;default&quot;,
+    spiders=&quot;default&quot;,
+    spiders_setting=&quot;default&quot;,
+    spring=&quot;default&quot;,
+    squid=&quot;default&quot;,
+    start_location=&quot;default&quot;,
+    summer=&quot;default&quot;,
+    tallbirds=&quot;default&quot;,
+    task_set=&quot;default&quot;,
+    tentacles=&quot;default&quot;,
+    touchstone=&quot;default&quot;,
+    trees=&quot;default&quot;,
+    tumbleweed=&quot;default&quot;,
+    twiggytrees_regrowth=&quot;default&quot;,
+    walrus=&quot;default&quot;,
+    walrus_setting=&quot;default&quot;,
+    wasps=&quot;default&quot;,
+    weather=&quot;default&quot;,
+    wildfires=&quot;default&quot;,
+    winter=&quot;default&quot;,
+    wobsters=&quot;default&quot;,
+    world_size=&quot;default&quot;,
+    wormhole_prefab=&quot;wormhole&quot; 
+  },
+  random_set_pieces={
+    &quot;Sculptures_2&quot;,
+    &quot;Sculptures_3&quot;,
+    &quot;Sculptures_4&quot;,
+    &quot;Sculptures_5&quot;,
+    &quot;Chessy_1&quot;,
+    &quot;Chessy_2&quot;,
+    &quot;Chessy_3&quot;,
+    &quot;Chessy_4&quot;,
+    &quot;Chessy_5&quot;,
+    &quot;Chessy_6&quot;,
+    &quot;Maxwell1&quot;,
+    &quot;Maxwell2&quot;,
+    &quot;Maxwell3&quot;,
+    &quot;Maxwell4&quot;,
+    &quot;Maxwell6&quot;,
+    &quot;Maxwell7&quot;,
+    &quot;Warzone_1&quot;,
+    &quot;Warzone_2&quot;,
+    &quot;Warzone_3&quot; 
+  },
+  required_prefabs={ &quot;multiplayer_portal&quot; },
+  required_setpieces={ &quot;Sculptures_1&quot;, &quot;Maxwell5&quot; },
+  settings_desc=&quot;标准《饥荒》体验。&quot;,
+  settings_id=&quot;SURVIVAL_TOGETHER&quot;,
+  settings_name=&quot;标准森林&quot;,
+  substitutes={  },
+  version=4,
+  worldgen_desc=&quot;标准《饥荒》体验。&quot;,
+  worldgen_id=&quot;SURVIVAL_TOGETHER&quot;,
+  worldgen_name=&quot;标准森林&quot; 
+}
+</code></pre>
+<h2 id="森林mod配置文件必选">森林Mod配置文件（必选）</h2>
+<p><strong>建议使用饥荒联机版客户端生成的服务器配置文件，不要手动修改配置文件，下面的服务器配置文件仅供参考。</strong></p>
+<p><strong>modoverrides.lua</strong></p>
+<pre><code>return {  }
+</code></pre>
+<h2 id="洞穴服务器配置文件必选">洞穴服务器配置文件（必选）</h2>
+<p><strong>建议使用饥荒联机版客户端生成的服务器配置文件，不要手动修改配置文件，下面的服务器配置文件仅供参考。</strong></p>
+<p><strong>server.ini</strong></p>
+<pre><code>[NETWORK]
+server_port = 10998
+
+
+[SHARD]
+is_master = false
+name = Caves
+id = 4290446173
+
+
+[ACCOUNT]
+encode_user_path = true
+
+
+[STEAM]
+master_server_port = 27017
+authentication_port = 8767
+</code></pre>
+<h2 id="洞穴地形配置文件必选">洞穴地形配置文件（必选）</h2>
+<p><strong>建议使用饥荒联机版客户端生成的服务器配置文件，不要手动修改配置文件，下面的服务器配置文件仅供参考。</strong></p>
+<p><strong>leveldataoverride.lua</strong></p>
+<pre><code>return {
+  background_node_range={ 0, 1 },
+  desc=&quot;探查洞穴…… 一起！&quot;,
+  hideminimap=false,
+  id=&quot;DST_CAVE&quot;,
+  location=&quot;cave&quot;,
+  max_playlist_position=999,
+  min_playlist_position=0,
+  name=&quot;洞穴&quot;,
+  numrandom_set_pieces=0,
+  override_level_string=false,
+  overrides={
+    atriumgate=&quot;default&quot;,
+    banana=&quot;default&quot;,
+    bats=&quot;default&quot;,
+    bats_setting=&quot;default&quot;,
+    beefaloheat=&quot;default&quot;,
+    berrybush=&quot;default&quot;,
+    boons=&quot;default&quot;,
+    branching=&quot;default&quot;,
+    brightmarecreatures=&quot;default&quot;,
+    bunnymen=&quot;default&quot;,
+    bunnymen_setting=&quot;default&quot;,
+    cave_ponds=&quot;default&quot;,
+    cave_spiders=&quot;default&quot;,
+    cavelight=&quot;default&quot;,
+    chess=&quot;default&quot;,
+    day=&quot;default&quot;,
+    dropeverythingondespawn=&quot;default&quot;,
+    dustmoths=&quot;default&quot;,
+    earthquakes=&quot;default&quot;,
+    extrastartingitems=&quot;default&quot;,
+    fern=&quot;default&quot;,
+    fissure=&quot;default&quot;,
+    flint=&quot;default&quot;,
+    flower_cave=&quot;default&quot;,
+    flower_cave_regrowth=&quot;default&quot;,
+    fruitfly=&quot;default&quot;,
+    grass=&quot;default&quot;,
+    grassgekkos=&quot;default&quot;,
+    krampus=&quot;default&quot;,
+    layout_mode=&quot;RestrictNodesByKey&quot;,
+    lichen=&quot;default&quot;,
+    liefs=&quot;default&quot;,
+    lightflier_flower_regrowth=&quot;default&quot;,
+    lightfliers=&quot;default&quot;,
+    loop=&quot;default&quot;,
+    marshbush=&quot;default&quot;,
+    merms=&quot;default&quot;,
+    molebats=&quot;default&quot;,
+    moles_setting=&quot;default&quot;,
+    monkey=&quot;default&quot;,
+    monkey_setting=&quot;default&quot;,
+    mushgnome=&quot;default&quot;,
+    mushroom=&quot;default&quot;,
+    mushtree=&quot;default&quot;,
+    mushtree_moon_regrowth=&quot;default&quot;,
+    mushtree_regrowth=&quot;default&quot;,
+    nightmarecreatures=&quot;default&quot;,
+    pigs_setting=&quot;default&quot;,
+    prefabswaps_start=&quot;default&quot;,
+    reeds=&quot;default&quot;,
+    regrowth=&quot;default&quot;,
+    roads=&quot;never&quot;,
+    rock=&quot;default&quot;,
+    rocky=&quot;default&quot;,
+    rocky_setting=&quot;default&quot;,
+    sapling=&quot;default&quot;,
+    season_start=&quot;default&quot;,
+    seasonalstartingitems=&quot;default&quot;,
+    shadowcreatures=&quot;default&quot;,
+    slurper=&quot;default&quot;,
+    slurtles=&quot;default&quot;,
+    slurtles_setting=&quot;default&quot;,
+    snurtles=&quot;default&quot;,
+    spawnprotection=&quot;default&quot;,
+    specialevent=&quot;default&quot;,
+    spider_dropper=&quot;default&quot;,
+    spider_hider=&quot;default&quot;,
+    spider_spitter=&quot;default&quot;,
+    spider_warriors=&quot;default&quot;,
+    spiderqueen=&quot;default&quot;,
+    spiders=&quot;default&quot;,
+    spiders_setting=&quot;default&quot;,
+    start_location=&quot;caves&quot;,
+    task_set=&quot;cave_default&quot;,
+    tentacles=&quot;default&quot;,
+    toadstool=&quot;default&quot;,
+    touchstone=&quot;default&quot;,
+    trees=&quot;default&quot;,
+    weather=&quot;default&quot;,
+    world_size=&quot;default&quot;,
+    wormattacks=&quot;default&quot;,
+    wormhole_prefab=&quot;tentacle_pillar&quot;,
+    wormlights=&quot;default&quot;,
+    worms=&quot;default&quot; 
+  },
+  required_prefabs={ &quot;multiplayer_portal&quot; },
+  settings_desc=&quot;探查洞穴…… 一起！&quot;,
+  settings_id=&quot;DST_CAVE&quot;,
+  settings_name=&quot;洞穴&quot;,
+  substitutes={  },
+  version=4,
+  worldgen_desc=&quot;探查洞穴…… 一起！&quot;,
+  worldgen_id=&quot;DST_CAVE&quot;,
+  worldgen_name=&quot;洞穴&quot; 
+}
+</code></pre>
+<h2 id="洞穴mod配置文件必选">洞穴Mod配置文件（必选）</h2>
+<p><strong>建议使用饥荒联机版客户端生成的服务器配置文件，不要手动修改配置文件，下面的服务器配置文件仅供参考。</strong></p>
+<p><strong>modoverrides.lua</strong></p>
+<pre><code>return {  }
+</code></pre>
+<h2 id="klei-user-id-和-steam-64位-id">Klei User ID 和 Steam 64位 ID</h2>
+<p>如同所示，你可以查看服务器日志文件，获取 Klei User ID 和 Steam 64位 ID。</p>
+<figure data-type="image" tabindex="2"><img src="https://drive.jianrry.com/image/dst-server21.jpg?raw" alt="" loading="lazy"></figure>
+<h2 id="管理员名单可选">管理员名单（可选）</h2>
+<p>管理员名单上的用户，自动拥有管理员权限。</p>
+<p>如图所示，添加 Klei User ID（以KU开头的一串字符）到管理员名单，每一个 Klei User ID 占据一行。</p>
+<figure data-type="image" tabindex="3"><img src="https://drive.jianrry.com/image/dst-server16.jpg?raw" alt="" loading="lazy"></figure>
+<h2 id="白名单可选">白名单（可选）</h2>
+<p>白名单上的用户，在服务器人数达到上限后，仍然可以加入服务器。</p>
+<h3 id="step1添加-klei-user-id">Step1：添加 Klei User ID</h3>
+<p>如图所示，添加 Klei User ID（以KU开头的一串字符）到白名单，每一个 Klei User ID 占据一行。</p>
+<figure data-type="image" tabindex="4"><img src="https://drive.jianrry.com/image/dst-server17.jpg?raw" alt="" loading="lazy"></figure>
+<h3 id="step2修改服务器设置">Step2：修改服务器设置</h3>
+<p>如同所示，增加一行配置，然后保存。</p>
+<p>图中的服务器的最大人数是6人，白名单用户是1人，普通用户最多5人。</p>
+<figure data-type="image" tabindex="5"><img src="https://drive.jianrry.com/image/dst-server18.jpg?raw" alt="" loading="lazy"></figure>
+<h2 id="黑名单可选">黑名单（可选）</h2>
+<p>黑名单上的用户，无法加入服务器。</p>
+<p>如图所示，添加 Steam 64位 ID 到管理员名单，每一个 Steam 64位 ID 占据一行。</p>
+<figure data-type="image" tabindex="6"><img src="https://drive.jianrry.com/image/dst-server19.jpg?raw" alt="" loading="lazy"></figure>
+<h2 id="文件汇总">文件汇总</h2>
+<p>Windows ：</p>
+<pre><code>此电脑\文档\Klei\DoNotStarveTogether\MyDediServer
+│
+│  cluster_token.txt-------------------------------访问令牌（必选）
+│  cluster.ini-------------------------------------服务器配置文件（必选）
+│  admin.txt---------------------------------------管理员名单（可选）
+│  whitelist.txt-----------------------------------白名单（可选）        
+│  blocklist.txt-----------------------------------黑名单（可选）
+│
+├─Master
+│      server.ini----------------------------------森林服务器配置文件（必选）
+│      leveldataoverride.lua-----------------------森林地形配置文件（必选）
+│      modoverrides.lua----------------------------森林Mod配置文件（必选）
+│
+└─Caves 
+        server.ini----------------------------------洞穴服务器配置文件（必选）
+        leveldataoverride.lua-----------------------洞穴地形配置文件（必选）
+        modoverrides.lua----------------------------洞穴Mod配置文件（必选）
+        
+</code></pre>
+<p>Linux ：</p>
+<pre><code>~/.klei/DoNotStarveTogether/MyDediServer
+│
+│  cluster_token.txt-------------------------------访问令牌（必选）
+│  cluster.ini-------------------------------------服务器配置文件（必选）
+│  admin.txt---------------------------------------管理员名单（可选）
+│  whitelist.txt-----------------------------------白名单（可选）        
+│  blocklist.txt-----------------------------------黑名单（可选）
+│
+├─Master
+│      server.ini----------------------------------森林服务器配置文件（必选）
+│      leveldataoverride.lua-----------------------森林地形配置文件（必选）
+│      modoverrides.lua----------------------------森林Mod配置文件（必选）
+│
+└─Caves 
+        server.ini----------------------------------洞穴服务器配置文件（必选）
+        leveldataoverride.lua-----------------------洞穴地形配置文件（必选）
+        modoverrides.lua----------------------------洞穴Mod配置文件（必选）
+        
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[饥荒联机版专用服务器部署教程（Linux 篇）]]></title>
         <id>https://blog.jianrry.com/post/deploy-dst-server-on-linux-tutorial/</id>
@@ -1374,56 +1886,6 @@ if __name__ == '__main__':
 <p>你只需要在订阅到期之前，多调用几次 Microsoft 365 E5 的 api，就可以实现自动续订。</p>
 <p>建议使用 api 搭建一个图床或者网盘，只要有人一直使用，就可以实现无限续订。</p>
 <p>你可以参考这篇<a href="https://blog.jianrry.com/post/build-a-personal-netdisc-by-onemanager-and-heroku-and-cloudflare-workers/">文章</a>，OneManager+Heroku+CloudFlare Workers 免费搭建个人网盘。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[记录中国银行洛天依借记卡申请过程]]></title>
-        <id>https://blog.jianrry.com/post/boc-luotianyi-debit-card/</id>
-        <link href="https://blog.jianrry.com/post/boc-luotianyi-debit-card/">
-        </link>
-        <updated>2021-05-11T13:55:54.000Z</updated>
-        <summary type="html"><![CDATA[<p>今天，接到了一个电话，是中国邮政的快递员打来的，原来是我申请的中国银行洛天依借记卡到了，让我本人携带身份证去签收快递。历时一个多月，经历了一波三折，我申请的中国银行洛天依借记卡终于到手了。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>今天，接到了一个电话，是中国邮政的快递员打来的，原来是我申请的中国银行洛天依借记卡到了，让我本人携带身份证去签收快递。历时一个多月，经历了一波三折，我申请的中国银行洛天依借记卡终于到手了。</p>
-<!-- more -->
-<h2 id="卡面鉴赏">卡面鉴赏：</h2>
-<h3 id="正面">正面：</h3>
-<figure data-type="image" tabindex="1"><img src="https://drive.jianrry.com/image/boc-luotianyi-debit-card.jpg?raw" alt="" loading="lazy"></figure>
-<h3 id="反面">反面：</h3>
-<figure data-type="image" tabindex="2"><img src="https://drive.jianrry.com/image/boc-luotianyi-debit-card2.jpg?raw" alt="" loading="lazy"></figure>
-<h2 id="申请条件">申请条件：</h2>
-<ol>
-<li>年满16周岁</li>
-<li>需本人身份证件</li>
-</ol>
-<p>5000个名额已满，申请链接暂时关闭，现在已经无法申请了。</p>
-<h2 id="申请流程">申请流程：</h2>
-<p>中国银行洛天依借记卡申请链接：<a href="https://cloud.bankofchina.com/sh/html/h5/card/luotianyi_ad.html">https://cloud.bankofchina.com/sh/html/h5/card/luotianyi_ad.html</a></p>
-<p>打开上面的链接，选择立即办卡后，上传身份证正反面和个人照片，完成信息登记，验证手机号之后，就完成了网上申请了。</p>
-<h2 id="查询办理状态">查询办理状态：</h2>
-<p>中国银行借记卡进度查询：<a href="https://cloud.bankofchina.com/sh/html/h5/card/search.html">https://cloud.bankofchina.com/sh/html/h5/card/search.html</a></p>
-<p>打开上面的链接，输入办卡人的姓名和身份证号就可以查询了。</p>
-<p>下面是我的办卡进度，历时一个多月才到手，你可以参考一下。</p>
-<p>2021.04.09 开始申请</p>
-<p>2021.04.16 已受理</p>
-<p>通过审批</p>
-<p>2021.04.29 已开卡</p>
-<p>制卡中</p>
-<p>2021.05.07 已寄发</p>
-<p>2021.05.11 快递签收</p>
-<h2 id="卡片激活">卡片激活：</h2>
-<p>收到借记卡后，必须本人携带本人身份证到附近的中国银行网点进行激活，不能通过电话激活。</p>
-<p>步骤如下：</p>
-<ol>
-<li>修改卡片的初始密码（初始密码是你的身份证后七位，从倒数第七位到倒数第二位，不包含倒数第一位）。</li>
-<li>向卡内存款激活卡片（没有存钱的金额限制，到柜员机随便存一笔钱进去就行）。</li>
-</ol>
-<h2 id="注意事项">注意事项：</h2>
-<ol>
-<li>洛天依借记卡申请有名额限制，最多5000个名额，建议尽快申请。审批没通过，还可以继续申请，直到通过为止。</li>
-<li>邮寄地址必须精确到 xx 号、xx 室，而且不能使用标点符号（我因为使用了括号进行备注，第一次审批就没有通过）。</li>
-<li>个人照片必须使用你的自拍照，其他照片不行（我因为使用了登记照，结果第二次审批又没有通过）。</li>
-</ol>
 ]]></content>
     </entry>
 </feed>
