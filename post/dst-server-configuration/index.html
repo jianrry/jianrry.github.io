@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://blog.jianrry.com/favicon.ico?v=1622968045646">
+<link rel="shortcut icon" href="https://blog.jianrry.com/favicon.ico?v=1622996372070">
 <link rel="stylesheet" href="https://blog.jianrry.com/styles/main.css">
 
 
@@ -47,7 +47,7 @@
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://blog.jianrry.com">
-        <img src="https://blog.jianrry.com/images/avatar.png?v=1622968045646" class="site-logo">
+        <img src="https://blog.jianrry.com/images/avatar.png?v=1622996372070" class="site-logo">
         <h1 class="site-title">Jianrry</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -144,6 +144,7 @@
 </li>
 <li><a href="#%E9%BB%91%E5%90%8D%E5%8D%95%E5%8F%AF%E9%80%89">黑名单（可选）</a></li>
 <li><a href="#%E6%96%87%E4%BB%B6%E6%B1%87%E6%80%BB">文件汇总</a></li>
+<li><a href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99">参考资料</a></li>
 </ul>
 </li>
 </ul>
@@ -157,7 +158,7 @@
 <pre><code>~/.klei/DoNotStarveTogether/MyDediServer
 </code></pre>
 <p>饥荒联机版客户端和专用服务器的配置文件同样是通用的，你可以使用客户端的存档文件夹下的配置文件，替代专用服务器的配置文件。</p>
-<p>建议使用官网生成的访问令牌，不要使用客户端生成的访问令牌。</p>
+<p>客户端 和 官网 生成的访问令牌同样也是通用的，但建议使用 官网 生成的访问令牌。</p>
 <p>你只需要手动创建 管理员名单（admin.txt）、白名单（whitelist.txt）、黑名单（blocklist.txt），其他的全部配置文件都可以通过客户端生成。</p>
 <h2 id="访问令牌必选">访问令牌（必选）</h2>
 <p>没有访问令牌，就无法启动服务器。访问令牌的主人，自动拥有管理员权限。</p>
@@ -200,26 +201,31 @@ master_ip = 127.0.0.1
 master_port = 10888
 cluster_key = defaultPass
 </code></pre>
-<p>steam_group_admins：steam 组的管理员是否拥有服务器的管理员权限。默认值是 false。<br>
-steam_group_id：steam 组的 ID。<br>
-steam_group_only：是否只允许 steam 组的成员加入。</p>
-<p>game_mode：游戏模式。<br>
-max_players：服务器最大人数。<br>
-pvp： 是否开启 pvp。默认值是 false。<br>
-pause_when_empty：是否暂停时间，当服务器没人时。默认值是 true。</p>
-<p>lan_only_cluster：是否只允许局域网的玩家加入。默认值是 false。<br>
-cluster_intention：游戏风格。<br>
-cluster_password：服务器密码。默认值是空。<br>
-cluster_description：服务器描述。默认值是空。<br>
-cluster_name：服务器名。<br>
-offline_cluster：是否离线。默认值是 false。<br>
-cluster_language：服务器语言。</p>
-<p>console_enabled：是否开启控制台。默认值是 true。</p>
-<p>shard_enabled：默认值是 true。<br>
-bind_ip ：默认值是 127.0.0.1。<br>
-master_ip ：默认值是 127.0.0.1。<br>
-master_port ：默认值是 10888。<br>
-cluster_key：默认值是defaultPass。</p>
+<p><strong>[STEAM]</strong></p>
+<p>steam_group_admins：默认值是 false。当值是 true 时，steam_group_id 中指定的 Steam 组的管理员也将拥有服务器的管理员权限。</p>
+<p>steam_group_id：默认值是 0。steam_group_only / steam_group_admins 设置的 Steam 组 id。</p>
+<p>steam_group_only：默认值是 false。当值是 true 时，服务器将只允许 steam_group_id 中指定的 Steam 组 的成员加入。</p>
+<p><strong>[GAMEPLAY]</strong></p>
+<p>game_mode：默认值是 survival 。 有 survival（生存）、 endless（无尽） 、wilderness（荒野）这3种游戏模式。</p>
+<p>max_players：默认值是 16。服务器的最大人数。</p>
+<p>pvp： 默认值是 false。当值是 true 时，玩家可以互相伤害。</p>
+<p>pause_when_empty：默认值是 false 。当没有玩家连接时暂停服务器。</p>
+<p><strong>[NETWORK]</strong></p>
+<p>lan_only_cluster：默认值是 false 。当值是 true 时，服务器将只接受同一局域网上的机器的连接。</p>
+<p>cluster_intention：游戏风格。有 cooperative（合作）、 competitive（竞争）、social（社交）、madness（疯狂）这4种游戏风格。</p>
+<p>cluster_password：默认值是 空 。服务器密码。</p>
+<p>cluster_description：默认值是 空。服务器描述。</p>
+<p>cluster_name：服务器名。</p>
+<p>offline_cluster：默认值是 false。当值是 true 时，创建一个离线服务器，该服务器不会公开，只有本地网络上的玩家才能加入，任何与 Steam 相关的功能都将无法使用。</p>
+<p>cluster_language：服务器语言。</p>
+<p><strong>[MISC]</strong></p>
+<p>console_enabled：默认值是 true。当值是 true 时，允许在服务器的终端中输入 lua 命令。</p>
+<p><strong>[SHARD]</strong></p>
+<p>shard_enabled：默认值是 false。对于多层世界，值必须是 true。对于单个世界，可以省略。</p>
+<p>bind_ip ：默认值是 127.0.0.1。如果所有的服务器都在同一台机器上，值是127.0.0.1。如果服务器在不同的机器上，值是 0.0.0.0 。</p>
+<p>master_ip ：默认值是 空。如果所有的服务器都在同一台机器上，值是127.0.0.1。如果服务器在不同的机器上，值是 主服务器的 ip 。</p>
+<p>master_port ：默认值是 10888。主服务器监听的 UDP 端口。不能和同一台机器上的每个服务器的 server_port 相同。</p>
+<p>cluster_key：默认值是空。服务器认证密码。如果所有服务器都运行在同一台机器上，则只需要在 cluster.ini 中设置一次即可。如果服务器运行在不同的机器上，则每台服务器上的 cluster_key 必须相同。</p>
 <h2 id="森林服务器配置文件必选">森林服务器配置文件（必选）</h2>
 <p><strong>建议使用饥荒联机版客户端生成的服务器配置文件，不要手动修改配置文件，下面的服务器配置文件仅供参考。</strong></p>
 <p><strong>server.ini</strong></p>
@@ -234,6 +240,17 @@ is_master = true
 [ACCOUNT]
 encode_user_path = true
 </code></pre>
+<p><strong>[NETWORK]</strong></p>
+<p>server_port：默认值是 10999。取值范围在 10998 到 11018 之间。对于多层世界，同一台机器上的每个服务器的此端口必须不同。</p>
+<p><strong>[SHARD]</strong></p>
+<p>is_master：默认值是 空。只有一台服务器是主服务器，在主服务器的 server.ini 中将此设置为 true，在其他所有 server.ini 中设置为 false。</p>
+<p>name：默认值是 空。服务器名。</p>
+<p>id：服务器的 id 。</p>
+<p><strong>[ACCOUNT]</strong></p>
+<p>encode_user_path：默认值是 true。</p>
+<p><strong>[STEAM]</strong></p>
+<p>authentication_port：默认值是 8766。同一台机器上的每个服务器的此端口必须不同。</p>
+<p>master_server_port：默认值是 27016。同一台机器上的每个服务器的此端口必须不同。</p>
 <h2 id="森林地形配置文件必选">森林地形配置文件（必选）</h2>
 <p><strong>建议使用饥荒联机版客户端生成的服务器配置文件，不要手动修改配置文件，下面的服务器配置文件仅供参考。</strong></p>
 <p><strong>leveldataoverride.lua</strong></p>
@@ -446,6 +463,17 @@ encode_user_path = true
 master_server_port = 27017
 authentication_port = 8767
 </code></pre>
+<p><strong>[NETWORK]</strong></p>
+<p>server_port：默认值是 10999。取值范围在 10998 到 11018 之间。对于多层世界，同一台机器上的每个服务器的此端口必须不同。</p>
+<p><strong>[SHARD]</strong></p>
+<p>is_master：默认值是 空。只有一台服务器是主服务器，在主服务器的 server.ini 中将此设置为 true，在其他所有 server.ini 中设置为 false。</p>
+<p>name：默认值是 空。服务器名。</p>
+<p>id：服务器的 id 。</p>
+<p><strong>[ACCOUNT]</strong></p>
+<p>encode_user_path：默认值是 true。</p>
+<p><strong>[STEAM]</strong></p>
+<p>authentication_port：默认值是 8766。同一台机器上的每个服务器的此端口必须不同。</p>
+<p>master_server_port：默认值是 27016。同一台机器上的每个服务器的此端口必须不同。</p>
 <h2 id="洞穴地形配置文件必选">洞穴地形配置文件（必选）</h2>
 <p><strong>建议使用饥荒联机版客户端生成的服务器配置文件，不要手动修改配置文件，下面的服务器配置文件仅供参考。</strong></p>
 <p><strong>leveldataoverride.lua</strong></p>
@@ -623,6 +651,8 @@ authentication_port = 8767
         modoverrides.lua----------------------------洞穴Mod配置文件（必选）
         
 </code></pre>
+<h2 id="参考资料">参考资料</h2>
+<p><a href="https://forums.kleientertainment.com/forums/topic/64552-dedicated-server-settings-guide/">Dedicated Server Settings Guide</a></p>
 
             </div>
             
