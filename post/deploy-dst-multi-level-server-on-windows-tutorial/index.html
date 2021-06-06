@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>饥荒联机版专用服务器多层世界部署教程（Windows） | Jianrry</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://blog.jianrry.com/favicon.ico?v=1622968045646">
+<link rel="stylesheet" href="https://blog.jianrry.com/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="本文介绍了如何在 Windows 上部署饥荒联机版专用服务器多层世界。
+
+
+
+
+Step1：修改专用服务器的配置文件
+Step2：修改 SteamCMD 的配置文件
+Step3：连接各个世界
+
+
+
+
+Step1：修改专用服务器的配置文件
+打..." />
+    <meta name="keywords" content="dst,windows,steam" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://blog.jianrry.com">
+        <img src="https://blog.jianrry.com/images/avatar.png?v=1622968045646" class="site-logo">
+        <h1 class="site-title">Jianrry</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="/" class="site-nav" target="_blank">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="site-nav" target="_blank">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav" target="_blank">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav" target="_blank">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/jianrry" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://blog.jianrry.com/atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">饥荒联机版专用服务器多层世界部署教程（Windows）</h2>
+            <div class="post-date">2021-06-06</div>
+            
+              <div class="feature-container" style="background-image: url('https://drive.jianrry.com/image/dst-cover-picture.jpg?raw')">
+              </div>
+            
+            <div class="post-content" v-pre>
+              <p>本文介绍了如何在 Windows 上部署饥荒联机版专用服务器多层世界。</p>
+<!-- more -->
+<p><ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#step1%E4%BF%AE%E6%94%B9%E4%B8%93%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">Step1：修改专用服务器的配置文件</a></li>
+<li><a href="#step2%E4%BF%AE%E6%94%B9-steamcmd-%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">Step2：修改 SteamCMD 的配置文件</a></li>
+<li><a href="#step3%E8%BF%9E%E6%8E%A5%E5%90%84%E4%B8%AA%E4%B8%96%E7%95%8C">Step3：连接各个世界</a></li>
+</ul>
+</li>
+</ul>
+</p>
+<h2 id="step1修改专用服务器的配置文件">Step1：修改专用服务器的配置文件</h2>
+<p>打开<code>MyDediServer</code>文件夹，复制对应的服务器配置文件，然后在此处黏贴，最后重命名。比如说 复制 <code>Master</code>文件夹，然后在此处黏贴，最后重命名为<code>Master2</code>。</p>
+<p>你可以参考下面的配置文件进行修改，没有提到的配置文件没有必要修改。</p>
+<p>服务器配置文件：</p>
+<p><strong>cluster.ini</strong></p>
+<pre><code>[GAMEPLAY]
+game_mode = survival
+max_players = 6
+pvp = false
+pause_when_empty = true
+
+
+[NETWORK]
+lan_only_cluster = false
+cluster_intention = social
+cluster_password = 
+cluster_description = 
+cluster_name = Jianrry的世界
+offline_cluster = false
+cluster_language = zh
+
+
+[MISC]
+console_enabled = true
+
+
+[SHARD]
+shard_enabled = true
+bind_ip = 127.0.0.1
+master_ip = 127.0.0.1
+master_port = 10888
+cluster_key = defaultPass
+</code></pre>
+<p>shard_enabled：是否共享服务器。默认值是 false。对于多层世界，<strong>值必须是 true</strong>。对于单个世界，可以省略。</p>
+<p>bind_ip：绑定的ip。默认值是127.0.0.1。如果所有的服务器都运行在同一台机器上，则将其<strong>设置为127.0.0.1</strong>。如果服务器在不同的机器上，则设置为0.0.0.0。</p>
+<p>master_ip：主ip。默认值是127.0.0.1。如果所有的服务器都运行在同一台机器上，则将其<strong>设置为127.0.0.1</strong>。如果服务器在不同的机器上，则设置为主世界所在的服务器的ip。</p>
+<p>森林1 服务器配置文件：</p>
+<p><strong>server.ini</strong></p>
+<pre><code>[NETWORK]
+server_port = 10999
+
+
+[SHARD]
+is_master = true
+name = Master
+id = 1
+
+
+[ACCOUNT]
+encode_user_path = true
+
+
+[STEAM]
+master_server_port = 27015
+authentication_port = 8765
+</code></pre>
+<p>森林2 服务器配置文件：</p>
+<p><strong>server.ini</strong></p>
+<pre><code>[NETWORK]
+server_port = 11000
+
+
+[SHARD]
+is_master = false
+name = Master2
+id = 2
+
+
+[ACCOUNT]
+encode_user_path = true
+
+
+[STEAM]
+master_server_port = 27016
+authentication_port = 8766
+</code></pre>
+<p>洞穴1 服务器配置文件：</p>
+<p><strong>server.ini</strong></p>
+<pre><code>[NETWORK]
+server_port = 11001
+
+
+[SHARD]
+is_master = false
+name = Caves
+id = 3
+
+
+[ACCOUNT]
+encode_user_path = true
+
+
+[STEAM]
+master_server_port = 27017
+authentication_port = 8767
+</code></pre>
+<p>洞穴2 服务器配置文件：</p>
+<p><strong>server.ini</strong></p>
+<pre><code>[NETWORK]
+server_port = 11002
+
+
+[SHARD]
+is_master = false
+name = Caves2
+id = 4
+
+
+[ACCOUNT]
+encode_user_path = true
+
+
+[STEAM]
+master_server_port = 27018
+authentication_port = 8768
+</code></pre>
+<h2 id="step2修改-steamcmd-的配置文件">Step2：修改 SteamCMD 的配置文件</h2>
+<p>只需要修改 <code>dst.bat</code>文件，其他的配置文件没必要修改。</p>
+<p><strong>dst.bat</strong></p>
+<pre><code>c:\steamcmd\steamcmd.exe +login anonymous +app_update 343050 validate +quit
+cd /D &quot;c:\steamcmd\steamapps\common\Don't Starve Together Dedicated Server\bin&quot;
+start dontstarve_dedicated_server_nullrenderer -console -cluster MyDediServer -shard Master
+start dontstarve_dedicated_server_nullrenderer -console -cluster MyDediServer -shard Master2
+start dontstarve_dedicated_server_nullrenderer -console -cluster MyDediServer -shard Caves
+start dontstarve_dedicated_server_nullrenderer -console -cluster MyDediServer -shard Caves2
+</code></pre>
+<h2 id="step3连接各个世界">Step3：连接各个世界</h2>
+<p>进入游戏后，按下<code>`</code>键，打开控制台。</p>
+<p>然后按下<code>Ctrl</code>键，切换到远程模式。</p>
+<pre><code>c_spawn(&quot;migration_portal&quot;)
+</code></pre>
+<p>如图所示，会在鼠标所指的地方生成一个 Matic 朋友之门。</p>
+<figure data-type="image" tabindex="1"><img src="https://drive.jianrry.com/image/dst-server22.jpg?raw" alt="" loading="lazy"></figure>
+<pre><code>c_find(&quot;migration_portal&quot;).components.worldmigrator:SetDestinationWorld(&quot;1&quot;,true)
+</code></pre>
+<p>如图所示，靠近 Matic 朋友之门，设置 Matic 朋友之门 到达的世界。</p>
+<p>将下面的<code>1</code>改为你想要到达的世界的id，就可以到达指定的世界，你可以在<strong>server.ini</strong>文件中设置世界的id。</p>
+<figure data-type="image" tabindex="2"><img src="https://drive.jianrry.com/image/dst-server23.jpg?raw" alt="" loading="lazy"></figure>
+
+            </div>
+            
+              <div class="tag-container">
+                
+                  <a href="https://blog.jianrry.com/tag/dst/" class="tag">
+                    dst
+                  </a>
+                
+                  <a href="https://blog.jianrry.com/tag/windows/" class="tag">
+                    windows
+                  </a>
+                
+                  <a href="https://blog.jianrry.com/tag/steam/" class="tag">
+                    steam
+                  </a>
+                
+              </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://blog.jianrry.com/post/dst-server-configuration/">
+                  <h3 class="post-title">
+                    饥荒联机版专用服务器部署教程（配置篇）
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+              
+                <div id="gitalk-container" data-aos="fade-in"></div>
+              
+
+              
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '621354180a33de9b9548',
+        clientSecret: '429ebafe001bd88b0d6775ba4accab0df04b1638',
+        repo: 'jianrry.github.io',
+        owner: 'Jianrry',
+        admin: ['Jianrry'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>

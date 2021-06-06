@@ -2,13 +2,173 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://blog.jianrry.com</id>
     <title>Jianrry</title>
-    <updated>2021-06-06T05:37:29.650Z</updated>
+    <updated>2021-06-06T08:27:42.046Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://blog.jianrry.com"/>
     <link rel="self" href="https://blog.jianrry.com/atom.xml"/>
     <logo>https://blog.jianrry.com/images/avatar.png</logo>
     <icon>https://blog.jianrry.com/favicon.ico</icon>
     <rights>All rights reserved 2021, Jianrry</rights>
+    <entry>
+        <title type="html"><![CDATA[饥荒联机版专用服务器多层世界部署教程（Windows）]]></title>
+        <id>https://blog.jianrry.com/post/deploy-dst-multi-level-server-on-windows-tutorial/</id>
+        <link href="https://blog.jianrry.com/post/deploy-dst-multi-level-server-on-windows-tutorial/">
+        </link>
+        <updated>2021-06-06T06:45:14.000Z</updated>
+        <summary type="html"><![CDATA[<p>本文介绍了如何在 Windows 上部署饥荒联机版专用服务器多层世界。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>本文介绍了如何在 Windows 上部署饥荒联机版专用服务器多层世界。</p>
+<!-- more -->
+<p><ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#step1%E4%BF%AE%E6%94%B9%E4%B8%93%E7%94%A8%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">Step1：修改专用服务器的配置文件</a></li>
+<li><a href="#step2%E4%BF%AE%E6%94%B9-steamcmd-%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6">Step2：修改 SteamCMD 的配置文件</a></li>
+<li><a href="#step3%E8%BF%9E%E6%8E%A5%E5%90%84%E4%B8%AA%E4%B8%96%E7%95%8C">Step3：连接各个世界</a></li>
+</ul>
+</li>
+</ul>
+</p>
+<h2 id="step1修改专用服务器的配置文件">Step1：修改专用服务器的配置文件</h2>
+<p>打开<code>MyDediServer</code>文件夹，复制对应的服务器配置文件，然后在此处黏贴，最后重命名。比如说 复制 <code>Master</code>文件夹，然后在此处黏贴，最后重命名为<code>Master2</code>。</p>
+<p>你可以参考下面的配置文件进行修改，没有提到的配置文件没有必要修改。</p>
+<p>服务器配置文件：</p>
+<p><strong>cluster.ini</strong></p>
+<pre><code>[GAMEPLAY]
+game_mode = survival
+max_players = 6
+pvp = false
+pause_when_empty = true
+
+
+[NETWORK]
+lan_only_cluster = false
+cluster_intention = social
+cluster_password = 
+cluster_description = 
+cluster_name = Jianrry的世界
+offline_cluster = false
+cluster_language = zh
+
+
+[MISC]
+console_enabled = true
+
+
+[SHARD]
+shard_enabled = true
+bind_ip = 127.0.0.1
+master_ip = 127.0.0.1
+master_port = 10888
+cluster_key = defaultPass
+</code></pre>
+<p>shard_enabled：是否共享服务器。默认值是 false。对于多层世界，<strong>值必须是 true</strong>。对于单个世界，可以省略。</p>
+<p>bind_ip：绑定的ip。默认值是127.0.0.1。如果所有的服务器都运行在同一台机器上，则将其<strong>设置为127.0.0.1</strong>。如果服务器在不同的机器上，则设置为0.0.0.0。</p>
+<p>master_ip：主ip。默认值是127.0.0.1。如果所有的服务器都运行在同一台机器上，则将其<strong>设置为127.0.0.1</strong>。如果服务器在不同的机器上，则设置为主世界所在的服务器的ip。</p>
+<p>森林1 服务器配置文件：</p>
+<p><strong>server.ini</strong></p>
+<pre><code>[NETWORK]
+server_port = 10999
+
+
+[SHARD]
+is_master = true
+name = Master
+id = 1
+
+
+[ACCOUNT]
+encode_user_path = true
+
+
+[STEAM]
+master_server_port = 27015
+authentication_port = 8765
+</code></pre>
+<p>森林2 服务器配置文件：</p>
+<p><strong>server.ini</strong></p>
+<pre><code>[NETWORK]
+server_port = 11000
+
+
+[SHARD]
+is_master = false
+name = Master2
+id = 2
+
+
+[ACCOUNT]
+encode_user_path = true
+
+
+[STEAM]
+master_server_port = 27016
+authentication_port = 8766
+</code></pre>
+<p>洞穴1 服务器配置文件：</p>
+<p><strong>server.ini</strong></p>
+<pre><code>[NETWORK]
+server_port = 11001
+
+
+[SHARD]
+is_master = false
+name = Caves
+id = 3
+
+
+[ACCOUNT]
+encode_user_path = true
+
+
+[STEAM]
+master_server_port = 27017
+authentication_port = 8767
+</code></pre>
+<p>洞穴2 服务器配置文件：</p>
+<p><strong>server.ini</strong></p>
+<pre><code>[NETWORK]
+server_port = 11002
+
+
+[SHARD]
+is_master = false
+name = Caves2
+id = 4
+
+
+[ACCOUNT]
+encode_user_path = true
+
+
+[STEAM]
+master_server_port = 27018
+authentication_port = 8768
+</code></pre>
+<h2 id="step2修改-steamcmd-的配置文件">Step2：修改 SteamCMD 的配置文件</h2>
+<p>只需要修改 <code>dst.bat</code>文件，其他的配置文件没必要修改。</p>
+<p><strong>dst.bat</strong></p>
+<pre><code>c:\steamcmd\steamcmd.exe +login anonymous +app_update 343050 validate +quit
+cd /D &quot;c:\steamcmd\steamapps\common\Don't Starve Together Dedicated Server\bin&quot;
+start dontstarve_dedicated_server_nullrenderer -console -cluster MyDediServer -shard Master
+start dontstarve_dedicated_server_nullrenderer -console -cluster MyDediServer -shard Master2
+start dontstarve_dedicated_server_nullrenderer -console -cluster MyDediServer -shard Caves
+start dontstarve_dedicated_server_nullrenderer -console -cluster MyDediServer -shard Caves2
+</code></pre>
+<h2 id="step3连接各个世界">Step3：连接各个世界</h2>
+<p>进入游戏后，按下<code>`</code>键，打开控制台。</p>
+<p>然后按下<code>Ctrl</code>键，切换到远程模式。</p>
+<pre><code>c_spawn(&quot;migration_portal&quot;)
+</code></pre>
+<p>如图所示，会在鼠标所指的地方生成一个 Matic 朋友之门。</p>
+<figure data-type="image" tabindex="1"><img src="https://drive.jianrry.com/image/dst-server22.jpg?raw" alt="" loading="lazy"></figure>
+<pre><code>c_find(&quot;migration_portal&quot;).components.worldmigrator:SetDestinationWorld(&quot;1&quot;,true)
+</code></pre>
+<p>如图所示，靠近 Matic 朋友之门，设置 Matic 朋友之门 到达的世界。</p>
+<p>将下面的<code>1</code>改为你想要到达的世界的id，就可以到达指定的世界，你可以在<strong>server.ini</strong>文件中设置世界的id。</p>
+<figure data-type="image" tabindex="2"><img src="https://drive.jianrry.com/image/dst-server23.jpg?raw" alt="" loading="lazy"></figure>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[饥荒联机版专用服务器部署教程（配置篇）]]></title>
         <id>https://blog.jianrry.com/post/dst-server-configuration/</id>
@@ -1954,78 +2114,6 @@ if __name__ == '__main__':
 <p>你可以参考<a href="https://blog.jianrry.com/post/change-namesilo-ns-server-to-cloudflare/">这篇文章</a>，将你的域名托管到 CloudFlare。</p>
 <p>然后手动添加 一条 DNS 解析记录，指向 CloudFlare Workers 的三级域名，最后点击&quot;保存&quot;按钮。</p>
 <figure data-type="image" tabindex="22"><img src="https://drive.jianrry.com/image/cloudflare-add-a-cname-record-for-route.jpg?raw" alt="" loading="lazy"></figure>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[免费申请 Microsoft 365 E5 开发者订阅]]></title>
-        <id>https://blog.jianrry.com/post/join-the-microsoft-365-developer-program/</id>
-        <link href="https://blog.jianrry.com/post/join-the-microsoft-365-developer-program/">
-        </link>
-        <updated>2021-05-12T16:16:52.000Z</updated>
-        <summary type="html"><![CDATA[<p>任何人都可以注册成为 Microsoft 开发者，免费申请为期3个月的 Microsoft 365 E5开发者订阅。里面包括了25个用户许可证，可以使用 Office 365的绝大部分功能。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>任何人都可以注册成为 Microsoft 开发者，免费申请为期3个月的 Microsoft 365 E5开发者订阅。里面包括了25个用户许可证，可以使用 Office 365的绝大部分功能。</p>
-<!-- more -->
-<p><ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#%E7%94%B3%E8%AF%B7%E8%AE%A2%E9%98%85">申请订阅</a>
-<ul>
-<li><a href="#step1%E7%99%BB%E9%99%86%E4%BD%A0%E7%9A%84-microsoft-%E4%B8%AA%E4%BA%BA%E8%B4%A6%E5%8F%B7">Step1：登陆你的 Microsoft 个人账号</a></li>
-<li><a href="#step2%E6%B3%A8%E5%86%8C-microsoft-%E5%BC%80%E5%8F%91%E8%80%85%E8%B4%A6%E5%8F%B7">Step2：注册 Microsoft 开发者账号</a></li>
-<li><a href="#step3%E7%94%B3%E8%AF%B7-microsoft-365-e5-%E8%AE%A2%E9%98%85">Step3：申请 Microsoft 365 E5 订阅</a></li>
-</ul>
-</li>
-<li><a href="#%E8%AE%A2%E9%98%85%E7%AE%A1%E7%90%86">订阅管理</a>
-<ul>
-<li><a href="#step1%E7%99%BB%E9%99%86%E4%BD%A0%E7%9A%84-microsoft-365-e5-%E7%9A%84%E7%AE%A1%E7%90%86%E5%91%98%E8%B4%A6%E5%8F%B7">Step1：登陆你的 Microsoft 365 E5 的管理员账号</a></li>
-<li><a href="#step2%E6%B7%BB%E5%8A%A0%E7%94%A8%E6%88%B7">Step2：添加用户</a></li>
-</ul>
-</li>
-<li><a href="#%E8%B0%83%E6%95%B4%E7%A9%BA%E9%97%B4">调整空间</a></li>
-<li><a href="#%E8%87%AA%E5%8A%A8%E7%BB%AD%E8%AE%A2">自动续订</a></li>
-</ul>
-</li>
-</ul>
-</p>
-<h2 id="申请订阅">申请订阅</h2>
-<h3 id="step1登陆你的-microsoft-个人账号">Step1：登陆你的 Microsoft 个人账号</h3>
-<p>打开<a href="https://developer.microsoft.com/en-us/office/profile/">Microsoft 开发者页面</a>，登录你的 Microsoft 个人账号（如果没有，就注册一个 Microsoft 账号）。</p>
-<figure data-type="image" tabindex="1"><img src="https://drive.jianrry.com/image/microsoft-developer-sign-in.jpg?raw" alt="" loading="lazy"></figure>
-<h3 id="step2注册-microsoft-开发者账号">Step2：注册 Microsoft 开发者账号</h3>
-<p>依次填写你的个人信息，注册 Microsoft 开发者账号。</p>
-<figure data-type="image" tabindex="2"><img src="https://drive.jianrry.com/image/join-the-microsoft-365-developer-program.jpg?raw" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="3"><img src="https://drive.jianrry.com/image/join-the-microsoft-365-developer-program2.jpg?raw" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="4"><img src="https://drive.jianrry.com/image/join-the-microsoft-365-developer-program3.jpg?raw" alt="" loading="lazy"></figure>
-<h3 id="step3申请-microsoft-365-e5-订阅">Step3：申请 Microsoft 365 E5 订阅</h3>
-<p>点击“SET UP SUBSCRIPTION”，开始申请 Microsoft 365 E5 订阅。</p>
-<figure data-type="image" tabindex="5"><img src="https://drive.jianrry.com/image/set-up-subscription.jpg?raw" alt="" loading="lazy"></figure>
-<p>依次填写你的个人信息，注册 Microsoft 365 E5 的管理员账号。</p>
-<figure data-type="image" tabindex="6"><img src="https://drive.jianrry.com/image/set-up-subscription2.jpg?raw" alt="" loading="lazy"></figure>
-<p>添加你的手机号码，然后点击“Send code&quot;。填写收到的验证码之后，最后点击&quot;Set up&quot;。</p>
-<figure data-type="image" tabindex="7"><img src="https://drive.jianrry.com/image/set-up-subscription3.jpg?raw" alt="" loading="lazy"></figure>
-<h2 id="订阅管理">订阅管理</h2>
-<h3 id="step1登陆你的-microsoft-365-e5-的管理员账号">Step1：登陆你的 Microsoft 365 E5 的管理员账号</h3>
-<p>打开 <a href="https://admin.microsoft.com/Adminportal/Home">Microsoft 365 管理员中心</a>，登陆你的 你的 Microsoft 365 E5 的管理员账号。</p>
-<h3 id="step2添加用户">Step2：添加用户</h3>
-<p>依次执行下面的操作，添加一个用户账号。</p>
-<p>点击&quot;添加用户&quot;</p>
-<figure data-type="image" tabindex="8"><img src="https://drive.jianrry.com/image/microsoft-365-dev-center-add-user.jpg?raw" alt="" loading="lazy"></figure>
-<p>设置基本信息</p>
-<figure data-type="image" tabindex="9"><img src="https://drive.jianrry.com/image/microsoft-365-dev-center-add-user2.jpg?raw" alt="" loading="lazy"></figure>
-<p>分配产品许可证</p>
-<figure data-type="image" tabindex="10"><img src="https://drive.jianrry.com/image/microsoft-365-dev-center-add-user3.jpg?raw" alt="" loading="lazy"></figure>
-<p>可选设置</p>
-<figure data-type="image" tabindex="11"><img src="https://drive.jianrry.com/image/microsoft-365-dev-center-add-user4.jpg?raw" alt="" loading="lazy"></figure>
-<p>添加完毕</p>
-<figure data-type="image" tabindex="12"><img src="https://drive.jianrry.com/image/microsoft-365-dev-center-add-user5.jpg?raw" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="13"><img src="https://drive.jianrry.com/image/microsoft-365-dev-center-add-user6.jpg?raw" alt="" loading="lazy"></figure>
-<h2 id="调整空间">调整空间</h2>
-<p>用户默认的 onedrive 存储空间为 1t，如果你想调整特定用户的存储空间，你可以参考<a href="https://docs.microsoft.com/zh-cn/onedrive/change-user-storage">这篇文章</a>。</p>
-<h2 id="自动续订">自动续订</h2>
-<p>你只需要在订阅到期之前，多调用几次 Microsoft 365 E5 的 api，就可以实现自动续订。</p>
-<p>建议使用 api 搭建一个图床或者网盘，只要有人一直使用，就可以实现无限续订。</p>
-<p>你可以参考这篇<a href="https://blog.jianrry.com/post/build-a-personal-netdisc-by-onemanager-and-heroku-and-cloudflare-workers/">文章</a>，OneManager+Heroku+CloudFlare Workers 免费搭建个人网盘。</p>
 ]]></content>
     </entry>
 </feed>
