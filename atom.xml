@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://blog.jianrry.com</id>
     <title>Jianrry</title>
-    <updated>2021-06-06T05:25:48.442Z</updated>
+    <updated>2021-06-06T05:37:29.650Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://blog.jianrry.com"/>
     <link rel="self" href="https://blog.jianrry.com/atom.xml"/>
@@ -54,6 +54,7 @@
 <pre><code>~/.klei/DoNotStarveTogether/MyDediServer
 </code></pre>
 <p>饥荒联机版客户端和专用服务器的配置文件同样是通用的，你可以使用客户端的存档文件夹下的配置文件，替代专用服务器的配置文件。</p>
+<p>建议使用官网生成的访问令牌，不要使用客户端生成的访问令牌。</p>
 <p>你只需要手动创建 管理员名单（admin.txt）、白名单（whitelist.txt）、黑名单（blocklist.txt），其他的全部配置文件都可以通过客户端生成。</p>
 <h2 id="访问令牌必选">访问令牌（必选）</h2>
 <p>没有访问令牌，就无法启动服务器。访问令牌的主人，自动拥有管理员权限。</p>
