@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://blog.jianrry.com/favicon.ico?v=1622911889173">
+<link rel="shortcut icon" href="https://blog.jianrry.com/favicon.ico?v=1622957104915">
 <link rel="stylesheet" href="https://blog.jianrry.com/styles/main.css">
 
 
@@ -60,7 +60,7 @@ ipconfig
   <div class="top-container" data-aos="fade-right">
     <div class="top-header-container">
       <a class="site-title-container" href="https://blog.jianrry.com">
-        <img src="https://blog.jianrry.com/images/avatar.png?v=1622911889173" class="site-logo">
+        <img src="https://blog.jianrry.com/images/avatar.png?v=1622957104915" class="site-logo">
         <h1 class="site-title">Jianrry</h1>
       </a>
       <div class="menu-btn" @click="menuVisible = !menuVisible">
@@ -189,56 +189,195 @@ Mode                 LastWriteTime         Length Name
 <h3 id="tree">tree</h3>
 <p>说明：显示文件或目录的树状图</p>
 <p>语法：</p>
-<pre><code>tree [&lt;drive&gt;:][&lt;path&gt;]
+<pre><code>tree [/f] [&lt;drive&gt;:][&lt;path&gt;]
 </code></pre>
 <p>实例：</p>
-<pre><code>tree
+<pre><code>tree /f
 </code></pre>
 <p>预览：</p>
-<pre><code>PS C:\Users\admin\Documents\Gridea&gt; tree
+<pre><code>PS C:\Users\admin\Documents\Gridea&gt; tree /f
 文件夹 PATH 列表
 卷序列号为 069C-7679
 C:.
+│  favicon.ico
+│
 ├─config
+│      posts.json
+│      setting.json
+│      theme.json
+│
 ├─images
+│      avatar.png
+│
 ├─output
 ├─post-images
+│      hello-gridea.png
+│
 ├─posts
+│      about.md
+│      hello-gridea.md
+│
 ├─static
+│      404.html
+│
 └─themes
     ├─fly
+    │  │  config.json
+    │  │  style-override.js
+    │  │
     │  ├─assets
     │  │  ├─media
     │  │  │  └─fonts
+    │  │  │          icomoon.eot
+    │  │  │          icomoon.svg
+    │  │  │          icomoon.ttf
+    │  │  │          icomoon.woff
+    │  │  │
     │  │  └─styles
+    │  │      │  main.less
+    │  │      │
     │  │      ├─_blocks
+    │  │      │      archives.less
+    │  │      │      fonts.less
+    │  │      │      footer.less
+    │  │      │      header.less
+    │  │      │      link.less
+    │  │      │      list.less
+    │  │      │      pagination.less
+    │  │      │      post.less
+    │  │      │      tag.less
+    │  │      │      tags.less
+    │  │      │
     │  │      └─_core
+    │  │              base.less
+    │  │              colors.less
+    │  │              github.less
+    │  │
     │  └─templates
+    │      │  archives.ejs
+    │      │  index.ejs
+    │      │  post.ejs
+    │      │  tag.ejs
+    │      │  tags.ejs
+    │      │
     │      └─includes
+    │              footer.ejs
+    │              head.ejs
+    │              header.ejs
+    │              post-list-archives.ejs
+    │              post-list.ejs
+    │              scripts.ejs
+    │
     ├─notes
+    │  │  config.json
+    │  │  style-override.js
+    │  │
     │  ├─assets
     │  │  └─styles
+    │  │      │  main.less
+    │  │      │
     │  │      ├─abstracts
+    │  │      │      varibles.less
+    │  │      │
     │  │      ├─components
+    │  │      │      about.less
+    │  │      │      archives.less
+    │  │      │      footer.less
+    │  │      │      header.less
+    │  │      │      home.less
+    │  │      │      post.less
+    │  │      │      tag.less
+    │  │      │      tags.less
+    │  │      │
     │  │      └─lib
+    │  │              colors.less
+    │  │              github.less
+    │  │              modern-normalize.less
+    │  │
     │  └─templates
+    │      │  archives.ejs
+    │      │  index.ejs
+    │      │  post.ejs
+    │      │  tag.ejs
+    │      │  tags.ejs
+    │      │
     │      └─includes
+    │              disqus.ejs
+    │              footer.ejs
+    │              gitalk.ejs
+    │              head.ejs
+    │              header.ejs
+    │              pagination.ejs
+    │              post-list-archives.ejs
+    │              post-list.ejs
+    │
     ├─paper
+    │  │  config.json
+    │  │  style-override.js
+    │  │
     │  ├─assets
     │  │  ├─media
+    │  │  │  │  logo.png
+    │  │  │  │
     │  │  │  └─images
+    │  │  │          geometry2.png
+    │  │  │
     │  │  └─styles
+    │  │      │  main.less
+    │  │      │
     │  │      └─_core
+    │  │              base.less
+    │  │              colors.less
+    │  │              github.less
+    │  │
     │  └─templates
+    │      │  archives.ejs
+    │      │  index.ejs
+    │      │  post.ejs
+    │      │  tag.ejs
+    │      │  tags.ejs
+    │      │
     │      └─_blocks
+    │              head.ejs
+    │              header.ejs
+    │              pagination.ejs
+    │              post-list.ejs
+    │              scripts.ejs
+    │              sidebar.ejs
+    │
     └─simple
+        │  config.json
+        │  style-override.js
+        │
         ├─assets
         │  ├─media
+        │  │  │  logo.png
+        │  │  │
         │  │  └─images
+        │  │          sidebar-bg.jpg
+        │  │
         │  └─styles
+        │      │  main.less
+        │      │
         │      └─_core
+        │              a11y-dark.less
+        │              atom-one-dark.less
+        │              base.less
+        │              colors.less
+        │              github.less
+        │
         └─templates
+            │  archives.ejs
+            │  index.ejs
+            │  post.ejs
+            │  tag.ejs
+            │  tags.ejs
+            │
             └─_blocks
+                    head.ejs
+                    pagination.ejs
+                    scripts.ejs
+                    sidebar.ejs
 </code></pre>
 <h3 id="md">md</h3>
 <p>说明：make directory（创建目录）的缩写。创建目录或子目录。</p>

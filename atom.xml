@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://blog.jianrry.com</id>
     <title>Jianrry</title>
-    <updated>2021-06-05T16:51:36.077Z</updated>
+    <updated>2021-06-06T05:25:48.442Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://blog.jianrry.com"/>
     <link rel="self" href="https://blog.jianrry.com/atom.xml"/>
@@ -772,56 +772,195 @@ Mode                 LastWriteTime         Length Name
 <h3 id="tree">tree</h3>
 <p>说明：显示文件或目录的树状图</p>
 <p>语法：</p>
-<pre><code>tree [&lt;drive&gt;:][&lt;path&gt;]
+<pre><code>tree [/f] [&lt;drive&gt;:][&lt;path&gt;]
 </code></pre>
 <p>实例：</p>
-<pre><code>tree
+<pre><code>tree /f
 </code></pre>
 <p>预览：</p>
-<pre><code>PS C:\Users\admin\Documents\Gridea&gt; tree
+<pre><code>PS C:\Users\admin\Documents\Gridea&gt; tree /f
 文件夹 PATH 列表
 卷序列号为 069C-7679
 C:.
+│  favicon.ico
+│
 ├─config
+│      posts.json
+│      setting.json
+│      theme.json
+│
 ├─images
+│      avatar.png
+│
 ├─output
 ├─post-images
+│      hello-gridea.png
+│
 ├─posts
+│      about.md
+│      hello-gridea.md
+│
 ├─static
+│      404.html
+│
 └─themes
     ├─fly
+    │  │  config.json
+    │  │  style-override.js
+    │  │
     │  ├─assets
     │  │  ├─media
     │  │  │  └─fonts
+    │  │  │          icomoon.eot
+    │  │  │          icomoon.svg
+    │  │  │          icomoon.ttf
+    │  │  │          icomoon.woff
+    │  │  │
     │  │  └─styles
+    │  │      │  main.less
+    │  │      │
     │  │      ├─_blocks
+    │  │      │      archives.less
+    │  │      │      fonts.less
+    │  │      │      footer.less
+    │  │      │      header.less
+    │  │      │      link.less
+    │  │      │      list.less
+    │  │      │      pagination.less
+    │  │      │      post.less
+    │  │      │      tag.less
+    │  │      │      tags.less
+    │  │      │
     │  │      └─_core
+    │  │              base.less
+    │  │              colors.less
+    │  │              github.less
+    │  │
     │  └─templates
+    │      │  archives.ejs
+    │      │  index.ejs
+    │      │  post.ejs
+    │      │  tag.ejs
+    │      │  tags.ejs
+    │      │
     │      └─includes
+    │              footer.ejs
+    │              head.ejs
+    │              header.ejs
+    │              post-list-archives.ejs
+    │              post-list.ejs
+    │              scripts.ejs
+    │
     ├─notes
+    │  │  config.json
+    │  │  style-override.js
+    │  │
     │  ├─assets
     │  │  └─styles
+    │  │      │  main.less
+    │  │      │
     │  │      ├─abstracts
+    │  │      │      varibles.less
+    │  │      │
     │  │      ├─components
+    │  │      │      about.less
+    │  │      │      archives.less
+    │  │      │      footer.less
+    │  │      │      header.less
+    │  │      │      home.less
+    │  │      │      post.less
+    │  │      │      tag.less
+    │  │      │      tags.less
+    │  │      │
     │  │      └─lib
+    │  │              colors.less
+    │  │              github.less
+    │  │              modern-normalize.less
+    │  │
     │  └─templates
+    │      │  archives.ejs
+    │      │  index.ejs
+    │      │  post.ejs
+    │      │  tag.ejs
+    │      │  tags.ejs
+    │      │
     │      └─includes
+    │              disqus.ejs
+    │              footer.ejs
+    │              gitalk.ejs
+    │              head.ejs
+    │              header.ejs
+    │              pagination.ejs
+    │              post-list-archives.ejs
+    │              post-list.ejs
+    │
     ├─paper
+    │  │  config.json
+    │  │  style-override.js
+    │  │
     │  ├─assets
     │  │  ├─media
+    │  │  │  │  logo.png
+    │  │  │  │
     │  │  │  └─images
+    │  │  │          geometry2.png
+    │  │  │
     │  │  └─styles
+    │  │      │  main.less
+    │  │      │
     │  │      └─_core
+    │  │              base.less
+    │  │              colors.less
+    │  │              github.less
+    │  │
     │  └─templates
+    │      │  archives.ejs
+    │      │  index.ejs
+    │      │  post.ejs
+    │      │  tag.ejs
+    │      │  tags.ejs
+    │      │
     │      └─_blocks
+    │              head.ejs
+    │              header.ejs
+    │              pagination.ejs
+    │              post-list.ejs
+    │              scripts.ejs
+    │              sidebar.ejs
+    │
     └─simple
+        │  config.json
+        │  style-override.js
+        │
         ├─assets
         │  ├─media
+        │  │  │  logo.png
+        │  │  │
         │  │  └─images
+        │  │          sidebar-bg.jpg
+        │  │
         │  └─styles
+        │      │  main.less
+        │      │
         │      └─_core
+        │              a11y-dark.less
+        │              atom-one-dark.less
+        │              base.less
+        │              colors.less
+        │              github.less
+        │
         └─templates
+            │  archives.ejs
+            │  index.ejs
+            │  post.ejs
+            │  tag.ejs
+            │  tags.ejs
+            │
             └─_blocks
+                    head.ejs
+                    pagination.ejs
+                    scripts.ejs
+                    sidebar.ejs
 </code></pre>
 <h3 id="md">md</h3>
 <p>说明：make directory（创建目录）的缩写。创建目录或子目录。</p>
